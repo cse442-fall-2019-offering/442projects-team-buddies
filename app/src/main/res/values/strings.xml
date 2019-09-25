@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">442projects-team-buddies</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="TitleWhichYouWantToDisplay">My Course</string>
 </resources>
