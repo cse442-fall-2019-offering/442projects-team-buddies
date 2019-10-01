@@ -163,20 +163,20 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="98dp"
                     android:id="@+id/voice"
-                    android:src="@drawable/ubLogo"/>
+                    android:src="@drawable/ub_logo"/>
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_toRightOf="@id/voice"
                     android:id="@+id/cart"
-                    android:src="@drawable/googleIcon"
+                    android:src="@drawable/google_icon"
                     android:layout_marginLeft="20dp"/>
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_toRightOf="@id/cart"
                     android:id="@+id/clock"
-                    android:src="@drawable/gitHubIcon"
+                    android:src="@drawable/github_icon"
                     android:layout_marginLeft="20dp"/>
 
             </RelativeLayout>
