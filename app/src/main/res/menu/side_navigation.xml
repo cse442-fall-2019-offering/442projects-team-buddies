@@ -4,18 +4,11 @@
     <item
         android:id="@+id/m_profile"
         android:title="My Profile"
-        android:icon="@drawable/ic_person"/>
+        android:icon="@drawable/ic_person"
+        android:onClick="myProfile"/>
     <item
-        android:id="@+id/m_file"
-        android:title="My File"
-        android:icon="@drawable/ic_file"/>
-    <item
-        android:id="@+id/collection"
-        android:title="My Collection"
-        android:icon="@drawable/ic_collections"/>
-    <item
-        android:id="@+id/m_chatroom"
-        android:title="Chatroom"
+        android:id="@+id/m_chatrooms"
+        android:title="Chatrooms"
         android:icon="@drawable/ic_chat"/>
     <item
         android:id="@+id/activities"
