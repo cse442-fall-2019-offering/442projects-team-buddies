@@ -3,4 +3,6 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="TitleWhichYouWantToDisplay">My Course</string>
+    <string name="parse_app_id">3626145656252fd2e04a7a5c43ef8353c71e6e5a</string>
+    <string name="parse_client_key">f2ce2c98ef747780d2b8536792131113182a7210</string>
 </resources>
