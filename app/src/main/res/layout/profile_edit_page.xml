@@ -5,35 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="252dp">
-
+        android:layout_height="305dp">
         <LinearLayout
+            android:background="@drawable/buffalo"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@drawable/buffalo"
             android:orientation="vertical">
-
             <ImageView
                 android:layout_width="247dp"
                 android:layout_height="149dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"
                 android:src="@drawable/photo_circle" />
-
             <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
                 android:text="Josh Allen"
                 android:textColor="#fff"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="21sp"/>
         </LinearLayout>
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <ScrollView
@@ -42,107 +42,90 @@
 
         <LinearLayout
             android:layout_width="360dp"
-            android:layout_height="360dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:orientation="vertical">
-
+            android:layout_marginTop="45dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp">
-
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_email_black_24dp" />
-
                 <TextView
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="JoshAllen@bills.com" />
+                    android:text="JoshAllen@bills.com"/>
             </LinearLayout>
-
             <LinearLayout
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp">
-
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_location_on_black_24dp" />
-
-                <TextView
-                    android:id="@+id/textViewProfileLocation"
+                <EditText
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:text="@string/TitleWhichYouWantToDisplay"
+                    android:id = "@+id/editTextLocation"/>
             </LinearLayout>
-
             <LinearLayout
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp">
-
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_colorize_black_24dp" />
-
-                <TextView
-                    android:id="@+id/textViewProfileDescription"
+                <EditText
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:id = "@+id/editTextDescription"
+                    android:text="@string/TitleWhichYouWantToDisplay"/>
             </LinearLayout>
-
             <LinearLayout
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp">
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_account_balance_black_24dp" />
-
-                <TextView
-                    android:id="@+id/textViewProfileMajor"
+                <EditText
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:id = "@+id/editTextMajor"
+                    android:text="@string/TitleWhichYouWantToDisplay"/>
+
             </LinearLayout>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:id="@+id/editProfileButton"
-                android:text="Edit Profile" />
-
-            <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="match_parent"
+                android:text="Save"
+                android:background="#2ea1e8"
+                android:onClick="saveProfile" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_account_balance_black_24dp" />
         </LinearLayout>
 
     </ScrollView>
