@@ -32,7 +32,7 @@ public class CourseViewActivity extends AppCompatActivity {
     }
 
     public void myProfile(MenuItem menuItem) {
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.profile_edit_page);
     }
 
     @Override
