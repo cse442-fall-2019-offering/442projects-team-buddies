@@ -25,6 +25,9 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
+        <meta-data
+            android:name="com.parse.SERVER_URL"
+            android:value="http://3.15.229.128:80/parse/"></meta-data>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

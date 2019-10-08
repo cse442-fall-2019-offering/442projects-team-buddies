@@ -4,8 +4,11 @@ import android.app.Application;
 import android.util.Log;
 
 import com.parse.Parse;
+import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class App extends Application {
@@ -14,11 +17,13 @@ public class App extends Application {
         super.onCreate();
 
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("3626145656252fd2e04a7a5c43ef8353c71e6e5a")
+                .applicationId("18f0b8b3f64fc2d7621627538afa4c34c30c1e95")
                 // if defined
-                .clientKey("f2ce2c98ef747780d2b8536792131113182a7210")
-                .server("http://18.220.52.221:80/parse/")
+                .clientKey("f4d5911c96f8e3e047845c9ee4bf6e4da09284f6")
+                .server("http://3.15.229.128:80/parse/")
                 .build());
+
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         ParseObject gameScore = new ParseObject("GameScore");
         gameScore.put("score", 1337);
@@ -26,10 +31,18 @@ public class App extends Application {
         gameScore.put("cheatMode", false);
         gameScore.saveInBackground(new SaveCallback() {
             @Override
+
             public void done(ParseException e) {
+                if(e!=null)
                 Log.i("Parse result",e.toString());
             }
         });
+
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
 
 
     }
