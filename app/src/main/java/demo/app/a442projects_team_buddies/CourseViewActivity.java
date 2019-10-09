@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +32,20 @@ public class CourseViewActivity extends AppCompatActivity {
         drawLayout = findViewById(R.id.drawerLayout);
     }
 
+    /*
+    Menu Item task to navigate to the profile
+     */
     public void myProfile(MenuItem menuItem) {
         setContentView(R.layout.profile_page);
+    }
+
+    /*
+    Menu item task to navigate to settings
+     */
+    public void mySettings(MenuItem menuItem) {
+        Intent settingsIntent = new Intent(this, settingsActivity.class);
+
+        startActivity(settingsIntent);
     }
 
     @Override
