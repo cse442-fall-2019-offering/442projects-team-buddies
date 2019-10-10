@@ -3,4 +3,5 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="TitleWhichYouWantToDisplay">My Course</string>
+    <string name="blank"></string>
 </resources>
