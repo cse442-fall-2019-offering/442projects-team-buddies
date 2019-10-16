@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="305dp">
+        android:layout_height="200dp">
         <LinearLayout
             android:background="@drawable/buffalo"
             android:layout_width="match_parent"
@@ -58,6 +58,7 @@
             android:paddingLeft="20dp"
             android:text="JoshAllen@bills.com"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="25dp"
             android:layout_width="match_parent"
@@ -109,6 +110,7 @@
                 android:paddingLeft="20dp"
                 android:text="BS in Computer Science"/>
         </LinearLayout>
+
     </LinearLayout>
 
     <Button
