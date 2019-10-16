@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -32,7 +33,9 @@ public class CourseViewActivity extends AppCompatActivity {
     }
 
     public void myProfile(MenuItem menuItem) {
-        setContentView(R.layout.profile_edit_page);
+        Intent intent = new Intent(this, ProfileActivity.class);
+
+        startActivity(intent);
     }
 
     @Override

@@ -51,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -63,6 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:text="JoshAllen@bills.com" />
             </LinearLayout>
 
@@ -71,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
+                android:paddingRight="25dp"
                 android:paddingLeft="25dp">
 
                 <ImageView
@@ -84,7 +87,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:paddingRight="20dp"
+                    android:text="My favorite place to study" />
             </LinearLayout>
 
             <LinearLayout
@@ -92,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -105,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:paddingRight="20dp"
+                    android:text="My profile Description" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,7 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -126,7 +133,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="@string/TitleWhichYouWantToDisplay" />
+                    android:paddingRight="20dp"
+                    android:text="My major" />
             </LinearLayout>
 
             <Button
@@ -135,6 +143,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:id="@+id/editProfileButton"
+                android:onClick="editMyProfile"
                 android:text="Edit Profile" />
 
             <TextView

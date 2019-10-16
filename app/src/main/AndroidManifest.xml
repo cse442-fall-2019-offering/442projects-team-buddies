@@ -36,6 +36,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseViewActivity"/>
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".CourseViewActivity"/>
+        <activity android:name=".ProfileEditActivity"
+            android:parentActivityName=".ProfileActivity"/>
     </application>
 
 </manifest>
