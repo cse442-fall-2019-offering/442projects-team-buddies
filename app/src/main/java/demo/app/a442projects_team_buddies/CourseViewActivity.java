@@ -4,11 +4,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.ClipData;
+
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+
 
 public class CourseViewActivity extends AppCompatActivity {
     private DrawerLayout drawLayout;
@@ -25,6 +24,7 @@ public class CourseViewActivity extends AppCompatActivity {
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
     }
 
     public void initWidgets(){
@@ -32,7 +32,7 @@ public class CourseViewActivity extends AppCompatActivity {
     }
 
     public void myProfile(MenuItem menuItem) {
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.profile_edit_page);
     }
 
     @Override
