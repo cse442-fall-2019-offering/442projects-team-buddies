@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,16 +25,18 @@ import com.google.android.gms.tasks.Task;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
-    private Intent intent;
+
     private EditText user;
     private EditText password;
     private Button signUpButton1;
     private Button signUpButton2;
+    private TextView forgetPassword;
     private EditText email;
     private ImageButton googleAuthButton;
 
@@ -49,16 +52,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
 
-        intent = new Intent(this, CourseViewActivity.class);
+
         loginButton = findViewById(R.id.login_btn);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(intent);
 
                 login(loginButton);
 
-                //setContentView(R.layout.profile_page);
             }
         });
 
@@ -78,6 +79,32 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        forgetPassword= findViewById(R.id.resetPassword);
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getBaseContext(), "successfully sent", Toast.LENGTH_LONG).show();
+                ParseUser.requestPasswordResetInBackground("singhvikram855@live.com", new RequestPasswordResetCallback() {
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            // An email was successfully sent with reset instructions.
+                            Toast.makeText(getBaseContext(), "successfully sent", Toast.LENGTH_LONG).show();
+                        } else {
+                            // Something went wrong. Look at the ParseException to see what's up.
+                            Toast.makeText(getBaseContext(), "not valid", Toast.LENGTH_LONG).show();
+                            Log.i("Result:","failed"+e.toString());
+                        }
+                    }
+                });
+            }
+        });
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+
+
 
         //Google Authentication start from here
 
@@ -132,15 +159,14 @@ public class LoginActivity extends AppCompatActivity {
             //Log.i("Status","below");
             Toast.makeText(getBaseContext(), "Hello I am google", Toast.LENGTH_LONG).show();
 
-            // Signed in successfully, show authenticated UI.
+            // Signed in successfully, show authenticated UI.//+++++++++++++++++++++++++++++++++++++++++++++
             //----------------------------------------------------------
 
 
             signUp();
 
             //---------------------------------------------------------
-            Intent intent = new Intent(this,CourseViewActivity.class);
-            startActivity(intent);
+           authenticatedUI();
             //setContentView(R.layout.secondactivity);
 
         } catch (ApiException e) {
@@ -173,10 +199,18 @@ public class LoginActivity extends AppCompatActivity {
                 if (user!=null)
                 {
                     Toast.makeText(getBaseContext(), "Successful", Toast.LENGTH_LONG).show();
+
+                    // Signed in successfully, show authenticated UI.+++++++++++++++++++++++++++++++++++++
+
+                    authenticatedUI();
+
+                    ((EditText) findViewById(R.id.username)).setText("");
+                    ((EditText) findViewById(R.id.password)).setText("");
+
                 }
                 else
                 {
-                    Toast.makeText(getBaseContext(), "failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Not a valid user", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -187,6 +221,7 @@ public class LoginActivity extends AppCompatActivity {
         email= (EditText)findViewById(R.id.user_email) ;
         user = (EditText) findViewById(R.id.username);
         password= (EditText) findViewById(R.id.password);
+        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         final ParseUser newUser= new ParseUser();
 
@@ -194,23 +229,43 @@ public class LoginActivity extends AppCompatActivity {
         newUser.setUsername(String.valueOf(user.getText()));
         newUser.setPassword(String.valueOf(password.getText()));
 
+        //newUser.isAuthenticated();
+
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                newUser.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e==null)
-                        {
-                            Toast.makeText(getBaseContext(), "Successful", Toast.LENGTH_LONG).show();
+                if(email.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(),"enter email address",Toast.LENGTH_SHORT).show();
+                }
+                else if (email.getText().toString().trim().matches(emailPattern))
+                {
+                    Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
+                    newUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e==null)
+                            {
+                                Toast.makeText(getBaseContext(), "Successful", Toast.LENGTH_LONG).show();
+                                // Signed in successfully, show authenticated UI.+++++++++++++++++++++++++++++++++++++
+
+                                authenticatedUI();
+                            }
+                            else
+                            {
+                                Toast.makeText(getBaseContext(), "failed", Toast.LENGTH_LONG).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(getBaseContext(), "failed", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                    });
+
+                }
+                else
+                    { Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });
@@ -240,7 +295,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-           // Glide.with(this).load(String.valueOf(personPhoto)).into(imageView);
+
+           ProfileFragment.personPhoto= String.valueOf(personPhoto);
         }
 
         newUser.signUpInBackground(new SignUpCallback() {
@@ -258,6 +314,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    public void authenticatedUI()
+    {
+        Intent intent = new Intent(this,CourseViewActivity.class);
+        startActivity(intent);
     }
 
 

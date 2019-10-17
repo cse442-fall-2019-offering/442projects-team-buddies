@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,13 +21,23 @@
                 android:background="@drawable/buffalo"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="247dp"
-                    android:layout_height="149dp"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="35dp"
-                    android:src="@drawable/photo_circle"
-                    android:id="@+id/pro"/>
+                    android:background="@color/circleBorder">
+
+                    <ImageView
+                        android:id="@+id/pro"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:padding="3dp"
+                        android:layout_margin="35dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/circle"
+                        android:src="@drawable/photo_circle" />
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,12 +157,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
 
+        android:layout_gravity="start"
         android:background="@color/colorWhite"
-        app:itemTextColor="@color/colorBlack"
-        app:itemIconTint="@color/colorDarkGray"
-        app:menu="@menu/side_navigation"
         app:headerLayout="@layout/sm_header_section"
-        android:layout_gravity="start">
-    </com.google.android.material.navigation.NavigationView>
+        app:itemIconTint="@color/colorDarkGray"
+        app:itemTextColor="@color/colorBlack"
+        app:menu="@menu/side_navigation"></com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
