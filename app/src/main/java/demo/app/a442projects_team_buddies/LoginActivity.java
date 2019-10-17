@@ -34,13 +34,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText user;
     private EditText password;
-    private Button signUpButton1;
-    private Button signUpButton2;
+    private Button signUpButton;
+
     private TextView forgetPassword;
     private EditText email;
     private ImageButton googleAuthButton;
 
-    int flag=0; //if 1 signup using google else signup normally
+    //int flag=0; //if 1 signup using google else signup normally
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -63,19 +63,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signUpButton1 = findViewById(R.id.signUp_btn);
+        signUpButton = findViewById(R.id.signUp_btn);
 
-        signUpButton1.setOnClickListener(new View.OnClickListener() {
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.signup);
-                signUpButton2= findViewById(R.id.button);
-                signUpButton2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        signUp(signUpButton2);
-                    }
-                });
+
+
+
+
+                Intent intent= new Intent(LoginActivity.this,SignupActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -127,6 +125,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account!=null)
+        {
+            //authenticatedUI();
+        }
     }
 
     private void signIn() {
@@ -216,62 +227,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    protected void signUp(Button signUpButton)
-    {
-        email= (EditText)findViewById(R.id.user_email) ;
-        user = (EditText) findViewById(R.id.username);
-        password= (EditText) findViewById(R.id.password);
-        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        final ParseUser newUser= new ParseUser();
-
-        newUser.setEmail(String.valueOf(email.getText()));
-        newUser.setUsername(String.valueOf(user.getText()));
-        newUser.setPassword(String.valueOf(password.getText()));
-
-        //newUser.isAuthenticated();
-
-
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(email.getText().toString().isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(),"enter email address",Toast.LENGTH_SHORT).show();
-                }
-                else if (email.getText().toString().trim().matches(emailPattern))
-                {
-                    Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
-                    newUser.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e==null)
-                            {
-                                Toast.makeText(getBaseContext(), "Successful", Toast.LENGTH_LONG).show();
-                                // Signed in successfully, show authenticated UI.+++++++++++++++++++++++++++++++++++++
-
-                                authenticatedUI();
-                            }
-                            else
-                            {
-                                Toast.makeText(getBaseContext(), "failed", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-
-                }
-                else
-                    { Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-            }
-        });
-
-
-    }
 
     protected void signUp()
     {

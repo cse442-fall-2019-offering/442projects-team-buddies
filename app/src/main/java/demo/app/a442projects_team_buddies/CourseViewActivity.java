@@ -16,6 +16,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.parse.ParseUser;
@@ -24,19 +30,23 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
     private DrawerLayout drawLayout;
     private ActionBarDrawerToggle toggle;
 
-    public FloatingActionButton floatingActionButton;
+
+
+    GoogleSignInClient mGoogleSignInClient;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
         drawLayout = findViewById(R.id.drawerLayout);
-
-
-
-
-
 
         toggle = new ActionBarDrawerToggle(this,drawLayout,R.string.open,R.string.close);
         drawLayout.addDrawerListener(toggle);
@@ -83,11 +93,33 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         }
         else if(menuItem.getItemId()==R.id.logout)
         {
-            ParseUser.logOut();
-            finish();
+
+
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+            if (account!=null)
+            {
+                signOut();
+            }
+            else {
+                ParseUser.logOut();
+                finish();
+            }
         }
         return true;
     }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+
+                        finish();
+                    }
+                });
+    }
+
 
 
 }
