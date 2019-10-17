@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".CourseViewActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".AddManuallyActivity"/>
+        <activity android:name=".AddManuallyActivity" />
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ public class CourseViewActivity extends AppCompatActivity {
 // THIS SHIT BELOW IS TO THE WRONG DESTINATION. MUST BE DIRECTED TOWARDS SEARCHACTIVITY BUT IT GIVES
 //ME A HARD TIME WHEN EVER I DIRECT IT THERE
 
-        intent = new Intent(this, AddManuallyActivity.class);
+        intent = new Intent(this, SearchActivity.class);
         btn_joinClass = findViewById(R.id.fab);
         btn_joinClass.setOnClickListener(new View.OnClickListener() {
             @Override

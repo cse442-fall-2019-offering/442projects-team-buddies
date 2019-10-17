@@ -18,16 +18,17 @@
             android:id="@+id/searchView">
         </SearchView>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/addManually"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_above="@id/myList"
             android:layout_marginLeft="1dp"
             android:layout_marginBottom="5dp"
+            android:tint="@color/UbBlue"
             android:layout_toRightOf="@id/searchView"
-            android:src="@drawable/ic_add_course"
-            android:onClick="addCourseManually"/>
+            android:src="@drawable/ic_control_point_black_24dp" />
+        //android:onClick="addCourseManually"/>
 
         <ListView
             android:layout_width="match_parent"
