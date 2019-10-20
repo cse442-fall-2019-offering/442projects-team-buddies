@@ -6,6 +6,7 @@
 
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
 
@@ -42,6 +43,10 @@
             android:parentActivityName=".ProfileActivity"/>
         <activity android:name=".settingsActivity"
             android:parentActivityName=".CourseViewActivity"/>
+        <activity android:name=".SignupActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".AddManuallyActivity"/>
     </application>
 
 </manifest>
