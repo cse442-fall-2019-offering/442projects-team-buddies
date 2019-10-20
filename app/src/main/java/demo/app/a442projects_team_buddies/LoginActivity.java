@@ -252,7 +252,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-           ProfileFragment.personPhoto= String.valueOf(personPhoto);
+           //ProfileFragment.personPhoto= String.valueOf(personPhoto);
         }
 
         newUser.signUpInBackground(new SignUpCallback() {

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class AddManuallyActivity extends AppCompatActivity {
     private Button btn_addClass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

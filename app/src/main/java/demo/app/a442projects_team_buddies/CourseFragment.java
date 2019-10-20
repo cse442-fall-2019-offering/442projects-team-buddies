@@ -1,6 +1,8 @@
 package demo.app.a442projects_team_buddies;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +24,12 @@ public class CourseFragment extends Fragment {
     CardView cardView;
     LinearLayout linearLayout;
 
+    View inflate1;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View inflate1= inflater.inflate(R.layout.courseview_page,container,false);
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+         inflate1= inflater.inflate(R.layout.courseview_page,container,false);
 
         floatingActionButton= inflate1.findViewById(R.id.fab);
 
@@ -47,6 +51,9 @@ public class CourseFragment extends Fragment {
 
                 //cardView.setCardBackgroundColor(Color.BLUE);
                 //linearLayout.addView(cardView);
+
+                Intent intent= new Intent(getActivity(),SearchActivity.class);
+                startActivity(intent);
             }
         });
 
