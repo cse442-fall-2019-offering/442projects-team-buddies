@@ -10,4 +10,6 @@
     <color name="colorBlack">#000000</color>
     <color name="colorDarkGray">#6C6C6C</color>
     <color name="colorBlue1">#0000FF</color>
+    <color name="solidCircle">#80FFFFFF</color>
+    <color name="circleBorder">#30FFFFFF</color>
 </resources>

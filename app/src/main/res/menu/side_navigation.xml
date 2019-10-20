@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+
+    tool:showIn="navigation_view">
     <item
         android:id="@+id/m_profile"
         android:title="My Profile"
-        android:icon="@drawable/ic_person"
-        android:onClick="myProfile"/>
+        android:icon="@drawable/ic_person" />
+    <item
+        android:id="@+id/m_course"
+        android:title="My Course"
+        android:icon="@drawable/ic_person">
+
+    </item>
     <item
         android:id="@+id/m_chatrooms"
         android:title="Chatrooms"
