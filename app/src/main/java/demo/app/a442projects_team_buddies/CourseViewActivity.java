@@ -38,6 +38,12 @@ public class CourseViewActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void mySettings(MenuItem menuItem) {
+        Intent intent = new Intent(this, settingsActivity.class);
+
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(toggle.onOptionsItemSelected(item)) {
