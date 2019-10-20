@@ -25,19 +25,6 @@ public class App extends Application {
 
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
-        ParseObject gameScore = new ParseObject("GameScore");
-        gameScore.put("score", 1337);
-        gameScore.put("playerName", "Sean Plott");
-        gameScore.put("cheatMode", false);
-        gameScore.saveInBackground(new SaveCallback() {
-            @Override
-
-            public void done(ParseException e) {
-                if(e!=null)
-                Log.i("Parse result",e.toString());
-            }
-        });
-
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
