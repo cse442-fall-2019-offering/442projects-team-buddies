@@ -16,7 +16,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     private ParseUser currentUser;
 
     private Button saveButton;
-    EditText editLocation, editMajor, editDescription;
+    EditText editLocation, editMajor, editDescription, editUsersName, editEmail;
 
 
     @Override
@@ -43,12 +43,16 @@ public class ProfileEditActivity extends AppCompatActivity {
         editDescription = findViewById(R.id.editTextDescription);
         editLocation = findViewById(R.id.editTextLocation);
         editMajor = findViewById(R.id.editTextMajor);
+        editUsersName = findViewById(R.id.editUsersName);
+        editEmail = findViewById(R.id.editEmail);
 
         //Getting the strings of the editTexts
-        String newDescription, newLocation, newMajor;
+        String newDescription, newLocation, newMajor, newUserName, newEmail;
         newDescription = editDescription.getText().toString();
         newLocation = editLocation.getText().toString();
         newMajor = editMajor.getText().toString();
+        newUserName = editUsersName.getText().toString();
+        newEmail = editEmail.getText().toString();
 
         //Setting the new information as long as the user didn't leave the editTexts empty
         if(!newDescription.isEmpty()) {
@@ -59,6 +63,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         }
         if(!newMajor.isEmpty()) {
             currentUser.put("major", newMajor);
+        }
+        if(!newUserName.isEmpty()) {
+            currentUser.put("name", newUserName);
+        }
+        if(!newEmail.isEmpty()) {
+            currentUser.put("email", newEmail);
         }
 
         currentUser.saveInBackground();

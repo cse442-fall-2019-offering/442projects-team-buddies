@@ -84,8 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
-                android:paddingRight="25dp"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 <ImageView
                     android:layout_width="36dp"
@@ -150,14 +150,19 @@
 
             <Button
 
+                android:id="@+id/editProfileButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:id="@+id/editProfileButton"
                 android:clickable="true"
                 android:text="Edit Profile" />
 
+            <TextView
+                android:id="@+id/profileSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="250px"
+                android:text="    " />
 
 
         </LinearLayout>
