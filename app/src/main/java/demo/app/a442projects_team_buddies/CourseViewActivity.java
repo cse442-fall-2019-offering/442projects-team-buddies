@@ -31,6 +31,8 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
     private DrawerLayout drawLayout;
     private ActionBarDrawerToggle toggle;
 
+    int selectedMenu ;
+
 
 
     GoogleSignInClient mGoogleSignInClient;
@@ -60,11 +62,12 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(savedInstanceState==null)
+        if(savedInstanceState==null )
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
 
         }
+
 
     }
 
@@ -83,21 +86,21 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        if(menuItem.getItemId()==R.id.m_profile)
+        if(menuItem.getItemId()==R.id.m_profile )
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
         }
-        else if(menuItem.getItemId()==R.id.m_course)
+        else if(menuItem.getItemId()==R.id.m_course  )
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment(),"course tag").commit();
 
         }
-        else if(menuItem.getItemId()==R.id.setting)
+        else if(menuItem.getItemId()==R.id.setting )
         {
             Intent intent = new Intent(this, settingsActivity.class);
             startActivity(intent);
         }
-        else if(menuItem.getItemId()==R.id.logout)
+        else if(menuItem.getItemId()==R.id.logout )
         {
 
 

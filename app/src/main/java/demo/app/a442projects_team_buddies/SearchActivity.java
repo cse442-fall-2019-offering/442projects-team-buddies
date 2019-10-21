@@ -112,6 +112,14 @@ public class SearchActivity extends AppCompatActivity {
                 userCourseEnrolled.put("Course_Number",arrayList.get(position));
                 userCourseEnrolled.saveInBackground();
 
+                CourseViewActivity courseViewActivity=new CourseViewActivity();
+
+                courseViewActivity.selectedMenu= 1;
+
+                //Intent intent = new Intent(SearchActivity.this,CourseViewActivity.class);
+                //startActivity(intent);
+                finish();
+
 
             }
 

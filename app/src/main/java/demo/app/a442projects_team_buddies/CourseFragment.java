@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,16 +62,19 @@ public class CourseFragment extends Fragment {
 
         ParseQuery<ParseObject> userCourses= ParseQuery.getQuery("User_Courses");
 
-        userCourses.whereEqualTo("username", ParseUser.getCurrentUser());
+        userCourses.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
         userCourses.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if(objects.size()>0 && e==null)
                 {
+
                     for (ParseObject object:objects)
                     {
+                        //Toast.makeText(inflate1.getContext(), object.getString("Course_Number"), Toast.LENGTH_LONG).show();
+
                         ParseQuery<ParseObject> userCourse= ParseQuery.getQuery("Course");
-                        userCourse.whereEqualTo("Course_Number", object.getString("Course_Name"));
+                        userCourse.whereEqualTo("Course_Number", object.getString("Course_Number"));
 
                         userCourse.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -79,7 +83,7 @@ public class CourseFragment extends Fragment {
 
                                     ParseObject course= objects.get(0);
 
-                                    courses.add(new CourseViewItem(course.getString("Course_Name"),course.getString("Course_Number"),course.getString("Instructor")) );
+                                    courses.add(new CourseViewItem("Course Name: "+course.getString("Course_Name"),"Course no.: "+course.getString("Course_Number"),"Instructor: "+course.getString("Instructor")) );
 
 
                                     rView.setHasFixedSize(true);  // if the view changes in size then comment out this line
@@ -119,6 +123,19 @@ public class CourseFragment extends Fragment {
 
                 Intent intent= new Intent(getActivity(),SearchActivity.class);
                 startActivity(intent);
+
+                Fragment frg = null;
+                frg = getFragmentManager().findFragmentByTag("course tag");
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(frg);
+                ft.attach(frg);
+                ft.commit();
+
+
+
+
+
+
             }
         });
 
