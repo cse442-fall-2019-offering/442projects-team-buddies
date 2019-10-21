@@ -46,7 +46,7 @@ public class settingsActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Restart the app to display your changes");
+        alertDialog.setMessage("Back out of settings to display your changes");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
