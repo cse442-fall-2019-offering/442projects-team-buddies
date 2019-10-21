@@ -25,6 +25,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,12 +57,46 @@ public class SearchActivity extends AppCompatActivity {
 
         final ArrayList<String> arrayList= new ArrayList<>();
 
-        arrayList.add("CSE$$");
-        arrayList.add("CSE444");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Course");
+        query.whereStartsWith("Course_Number","CSE");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> scoreList, ParseException e) {
+                if (e == null) {
+
+                    for (ParseObject object:scoreList)
+                    {
+                       // Toast.makeText(getBaseContext(), object.getString("Course_Number") , Toast.LENGTH_LONG).show();
+                        arrayList.add(object.getString("Course_Number"));
+                    }
+                    //Toast.makeText(getBaseContext(), "Course"+scoreList.size() , Toast.LENGTH_LONG).show();
+                } else {
+                    //Log.i("Course", "Error: " + e.getMessage());
+
+                    Toast.makeText(getBaseContext(), "Error: "  , Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
 
         ArrayAdapter arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
 
         courseListView.setAdapter(arrayAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return false;
+
+            }
+        });
 
         courseListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -69,7 +104,13 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Toast.makeText(getBaseContext(), arrayList.get(position), Toast.LENGTH_LONG).show();
-                finishActivity(1);
+                //finishActivity(1);
+
+                ParseObject userCourseEnrolled= new ParseObject("User_Courses");
+
+                userCourseEnrolled.put("username", ParseUser.getCurrentUser().getUsername());
+                userCourseEnrolled.put("Course_Number",arrayList.get(position));
+                userCourseEnrolled.saveInBackground();
 
 
             }
@@ -101,7 +142,8 @@ public class SearchActivity extends AppCompatActivity {
                             //Log.i("Course", "Retrieved " + scoreList.size() + " scores");
                             for (ParseObject object:scoreList)
                             {
-                                Toast.makeText(getBaseContext(), object.getString("Course_Number") , Toast.LENGTH_LONG).show();
+                               //Toast.makeText(getBaseContext(), object.getString("Course_Number") , Toast.LENGTH_LONG).show();
+
                             }
                             //Toast.makeText(getBaseContext(), "Course"+scoreList.size() , Toast.LENGTH_LONG).show();
                         } else {
@@ -119,15 +161,7 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        Toast.makeText(getBaseContext(),"finnishhhh", Toast.LENGTH_LONG).show();
-
-
-
-    }
 
     //I dont know what this is below but it made the thing crash
 

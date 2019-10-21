@@ -19,8 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CourseFragment extends Fragment {
 
@@ -53,6 +59,46 @@ public class CourseFragment extends Fragment {
         //rView.setLayoutManager(rViewLayoutManager);
         //rView.setAdapter(rViewAdapter);
 
+        ParseQuery<ParseObject> userCourses= ParseQuery.getQuery("User_Courses");
+
+        userCourses.whereEqualTo("username", ParseUser.getCurrentUser());
+        userCourses.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if(objects.size()>0 && e==null)
+                {
+                    for (ParseObject object:objects)
+                    {
+                        ParseQuery<ParseObject> userCourse= ParseQuery.getQuery("Course");
+                        userCourse.whereEqualTo("Course_Number", object.getString("Course_Name"));
+
+                        userCourse.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> objects, ParseException e) {
+                                if(objects.size()>0 && e==null){
+
+                                    ParseObject course= objects.get(0);
+
+                                    courses.add(new CourseViewItem(course.getString("Course_Name"),course.getString("Course_Number"),course.getString("Instructor")) );
+
+
+                                    rView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+                                    //rViewLayoutManager = new LinearLayoutManager();
+                                    rViewAdapter = new CardViewAdapter(courses);
+                                    rView.setLayoutManager(rViewLayoutManager);
+                                    rView.setAdapter(rViewAdapter);
+
+                                }
+
+                            }
+                        });
+
+
+                    }
+                }
+            }
+        });
+
 
 
 
@@ -69,14 +115,7 @@ public class CourseFragment extends Fragment {
                 //cardView.setCardBackgroundColor(Color.BLUE);
                 //linearLayout.addView(cardView);
 
-                courses.add(new CourseViewItem("CSE250","350","MathewHertz") );
 
-
-                rView.setHasFixedSize(true);  // if the view changes in size then comment out this line
-                //rViewLayoutManager = new LinearLayoutManager();
-                rViewAdapter = new CardViewAdapter(courses);
-                rView.setLayoutManager(rViewLayoutManager);
-                rView.setAdapter(rViewAdapter);
 
                 Intent intent= new Intent(getActivity(),SearchActivity.class);
                 startActivity(intent);
