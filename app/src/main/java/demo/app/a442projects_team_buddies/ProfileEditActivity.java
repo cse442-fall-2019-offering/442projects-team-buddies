@@ -3,6 +3,7 @@ package demo.app.a442projects_team_buddies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -12,20 +13,33 @@ import com.parse.ParseUser;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
-    private ParseUser currentUser = ParseUser.getCurrentUser();
+    private ParseUser currentUser;
+
+    private Button saveButton;
+    EditText editLocation, editMajor, editDescription;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_edit_page);
+        currentUser = ParseUser.getCurrentUser();
+        saveButton= findViewById(R.id.saveButton);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveChanges();
+            }
+        });
 
 
     }
 
-    public void saveChanges(View view) {
+    public void saveChanges() {
 
         //Text boxes in the profile_edit_page
-        EditText editLocation, editMajor, editDescription;
+
         editDescription = findViewById(R.id.editTextDescription);
         editLocation = findViewById(R.id.editTextLocation);
         editMajor = findViewById(R.id.editTextMajor);
@@ -47,8 +61,10 @@ public class ProfileEditActivity extends AppCompatActivity {
             currentUser.put("major", newMajor);
         }
 
-        Intent intent = new Intent(this, ProfileActivity.class);
+        currentUser.saveInBackground();
 
+        //this code will update the profile
+        Intent intent = new Intent(this,CourseViewActivity.class);
         startActivity(intent);
     }
 

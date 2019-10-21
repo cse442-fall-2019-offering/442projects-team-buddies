@@ -92,6 +92,11 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment()).commit();
 
         }
+        else if(menuItem.getItemId()==R.id.setting)
+        {
+            Intent intent = new Intent(this, settingsActivity.class);
+            startActivity(intent);
+        }
         else if(menuItem.getItemId()==R.id.logout)
         {
 

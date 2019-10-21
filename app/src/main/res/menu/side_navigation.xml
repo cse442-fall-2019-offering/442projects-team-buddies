@@ -26,7 +26,7 @@
         android:id="@+id/setting"
         android:title="Setting"
         android:icon="@drawable/ic_settings"
-        android:onClick="mySettings"/>
+        />
     <item
         android:id="@+id/logout"
         android:title="Logout"
