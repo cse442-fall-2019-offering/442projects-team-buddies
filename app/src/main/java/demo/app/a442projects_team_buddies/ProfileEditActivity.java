@@ -22,6 +22,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
         setContentView(R.layout.profile_edit_page);
         currentUser = ParseUser.getCurrentUser();
         saveButton= findViewById(R.id.saveButton);
@@ -77,5 +78,21 @@ public class ProfileEditActivity extends AppCompatActivity {
         Intent intent = new Intent(this,CourseViewActivity.class);
         startActivity(intent);
     }
+
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
+    }
+
 
 }
