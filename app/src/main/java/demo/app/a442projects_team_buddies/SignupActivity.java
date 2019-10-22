@@ -68,6 +68,8 @@ public class SignupActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(SignupActivity.this,CourseViewActivity.class);
                         startActivity(intent);
+                        finish();
+
 
                         ((EditText) findViewById(R.id.username)).setText("");
                         ((EditText) findViewById(R.id.password)).setText("");
