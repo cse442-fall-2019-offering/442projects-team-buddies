@@ -127,8 +127,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         currentUser.saveInBackground();
 
         //this code will update the profile
-        Intent intent = new Intent(this,CourseViewActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this,CourseViewActivity.class);
+        //startActivity(intent);
     }
 
     public void setUserTheme(int theme) {

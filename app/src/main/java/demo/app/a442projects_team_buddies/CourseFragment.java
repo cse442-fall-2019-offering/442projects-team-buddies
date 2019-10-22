@@ -51,6 +51,8 @@ public class CourseFragment extends Fragment {
 
         //linearLayout= inflate1.findViewById(R.id.course_linear);
 
+
+
         //courses.add(new CourseViewItem("CSE115","197","MathewHertz") );
 
         rView= inflate1.findViewById(R.id.recyclerView);
@@ -110,7 +112,7 @@ public class CourseFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(inflate1.getContext(), "Fab button pressed", Toast.LENGTH_LONG).show();
+                //Toast.makeText(inflate1.getContext(), "Fab button pressed", Toast.LENGTH_LONG).show();
                 //cardView= new CardView(inflate1.getContext());
                 //cardView= inflate1.findViewById(R.id.cardview);
                 //cardView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -123,6 +125,16 @@ public class CourseFragment extends Fragment {
 
                 Intent intent= new Intent(getActivity(),SearchActivity.class);
                 startActivity(intent);
+
+
+                /*Fragment frg = null;
+                frg = getFragmentManager().findFragmentByTag("courseFragment");
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                //ft.detach(frg);
+                ft.attach(frg);
+
+                //ft.attach(frg);
+                ft.commit();*/
 
 
             }

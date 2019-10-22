@@ -65,6 +65,7 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
 
         if(savedInstanceState==null  )
         {
+            setTitle("Profile Page");
             //loginActivity.changeDefaultFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
 
@@ -109,11 +110,13 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
 
         if(menuItem.getItemId()==R.id.m_profile )
         {
+            setTitle("Profile Page");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
         }
         else if(menuItem.getItemId()==R.id.m_course  )
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment(),"course tag").commit();
+            setTitle("Course Enrolled");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment(),"courseFragment").commit();
 
         }
         else if(menuItem.getItemId()==R.id.setting )

@@ -103,21 +103,48 @@ public class SearchActivity extends AppCompatActivity {
         courseListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
 
-                Toast.makeText(getBaseContext(), arrayList.get(position)+" added on your course view", Toast.LENGTH_LONG).show();
+                ParseQuery<ParseObject> quer= ParseQuery.getQuery("User_Courses");
+                quer.whereEqualTo("username",ParseUser.getCurrentUser().getUsername());
+                quer.whereEqualTo("Course_Number",arrayList.get(position));
+                quer.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if(objects.size()==0 && e==null)
+                        {
+                            Toast.makeText(getBaseContext(), arrayList.get(position)+" added on your course view", Toast.LENGTH_LONG).show();
+                            //finishActivity(1);
+
+                            ParseObject userCourseEnrolled= new ParseObject("User_Courses");
+
+                            userCourseEnrolled.put("username", ParseUser.getCurrentUser().getUsername());
+                            userCourseEnrolled.put("Course_Number",arrayList.get(position));
+                            userCourseEnrolled.saveInBackground();
+                            finish();
+
+                        }
+                        else
+                        {
+                            Toast.makeText(getBaseContext(), "You are already enrolled in "+ arrayList.get(position), Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+
+                /*Toast.makeText(getBaseContext(), arrayList.get(position)+" added on your course view", Toast.LENGTH_LONG).show();
                 //finishActivity(1);
 
                 ParseObject userCourseEnrolled= new ParseObject("User_Courses");
 
                 userCourseEnrolled.put("username", ParseUser.getCurrentUser().getUsername());
                 userCourseEnrolled.put("Course_Number",arrayList.get(position));
-                userCourseEnrolled.saveInBackground();
+                userCourseEnrolled.saveInBackground();*/
 
 
 
 
-                finish();
+
                 //Intent intent = new Intent(SearchActivity.this,CourseViewActivity.class);
                 //startActivityForResult(intent,20);
                 //finishActivity(1);
