@@ -85,20 +85,32 @@ public class ProfileFragment extends Fragment {
         });
 
        // ParseUser currentUser= ParseUser.getCurrentUser();
+        try {
 
-        ParseFile file= (ParseFile) currentUser.get("Profile_Image");
 
-        file.getDataInBackground(new GetDataCallback() {
-            @Override
-            public void done(byte[] data, ParseException e) {
-                if(e==null && data!=null)
-                {
-                    Bitmap bitmap= BitmapFactory.decodeByteArray(data,0,data.length);
+            ParseFile file = (ParseFile) currentUser.get("Profile_Image");
 
-                    profileImage.setImageBitmap(bitmap);
+
+            file.getDataInBackground(new GetDataCallback() {
+                @Override
+                public void done(byte[] data, ParseException e) {
+
+
+                    if (e == null && data != null) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+
+                        profileImage.setImageBitmap(bitmap);
+                    } else {
+
+                    }
                 }
-            }
-        });
+            });
+
+        }
+        catch (Exception ex)
+        {
+            return  inflater1;
+        }
 
 
 
