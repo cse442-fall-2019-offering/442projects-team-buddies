@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
 
        // ParseUser currentUser= ParseUser.getCurrentUser();
 
-        /*ParseFile file= (ParseFile) currentUser.get("Profile_Image");
+        ParseFile file= (ParseFile) currentUser.get("Profile_Image");
 
         file.getDataInBackground(new GetDataCallback() {
             @Override
@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment {
                     profileImage.setImageBitmap(bitmap);
                 }
             }
-        });*/
+        });
 
 
 
