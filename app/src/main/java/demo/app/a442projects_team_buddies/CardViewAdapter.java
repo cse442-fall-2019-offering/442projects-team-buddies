@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ExampleViewHolder>{
@@ -29,6 +30,11 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Exampl
             this.courseList=courseList;
 
         }
+
+//    public CourseViewItem getCardAt(int position){
+//        return courseList.get(position);
+//    }
+
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,5 +57,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Exampl
     public int getItemCount() {
         return courseList.size();
     }
+
+
+
 }
 
