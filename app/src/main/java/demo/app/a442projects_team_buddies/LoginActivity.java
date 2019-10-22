@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
 
+
     private EditText user;
     private EditText password;
     private Button signUpButton;
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView forgetPassword;
     private EditText email;
     private ImageButton googleAuthButton;
+
+    public int selectedMenu=0 ;
 
     //int flag=0; //if 1 signup using google else signup normally
 
@@ -277,6 +280,15 @@ public class LoginActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this,CourseViewActivity.class);
         startActivity(intent);
+    }
+
+    public void changeDefaultFragment(){
+        selectedMenu=1;
+    }
+
+    public int getSelectedItem()
+    {
+        return  selectedMenu;
     }
 
 

@@ -2,9 +2,12 @@ package demo.app.a442projects_team_buddies;
 
 import android.app.Notification;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +21,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,11 +60,16 @@ public class ProfileFragment extends Fragment {
 
         //below code will set the profile view
 
-        location.setText(currentUser.getString("studyLocation"));
-        major.setText(currentUser.getString("major"));
-        description.setText(currentUser.getString("personalDescription"));
+        String loc= "<b>"+"Favourite study Location: "+"</b>" +currentUser.getString("studyLocation") ;
+        String maj="<b>"+"Major: "+"</b>" +currentUser.getString("major");
+        String des="<b>"+"Description: "+"</b>" +currentUser.getString("personalDescription");
+        String email="<b>"+"Email: "+"</b>" + currentUser.getEmail();
+
+        location.setText(Html.fromHtml(loc));
+        major.setText(Html.fromHtml(maj));
+        description.setText(Html.fromHtml(des));
         userName.setText(currentUser.getString("name"));
-        userEmail.setText(currentUser.getEmail());
+        userEmail.setText(Html.fromHtml(email));
 
         editButton= inflater1.findViewById(R.id.editProfileButton);
 
@@ -71,16 +84,27 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        ParseUser currentUser= ParseUser.getCurrentUser();
+
+        ParseFile file= (ParseFile) currentUser.get("Profile_Image");
+
+        file.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if(e==null && data!=null)
+                {
+                    Bitmap bitmap= BitmapFactory.decodeByteArray(data,0,data.length);
+
+                    profileImage.setImageBitmap(bitmap);
+                }
+            }
+        });
 
 
-       profileImage.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent= new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               startActivityForResult(intent,1);
 
-           }
-       });
+
+
+
 
 
 
@@ -100,19 +124,7 @@ public class ProfileFragment extends Fragment {
         return inflater1;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1)
-        {
-            Uri image= data.getData();
-
-
-
-            profileImage.setImageURI(image);
-        }
-    }
 
 
 }

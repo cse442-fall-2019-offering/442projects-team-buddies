@@ -124,21 +124,12 @@ public class CourseFragment extends Fragment {
                 Intent intent= new Intent(getActivity(),SearchActivity.class);
                 startActivity(intent);
 
-                Fragment frg = null;
-                frg = getFragmentManager().findFragmentByTag("course tag");
-                final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(frg);
-                ft.attach(frg);
-                ft.commit();
-
-
-
-
-
 
             }
         });
 
         return inflate1;
     }
+
+
 }

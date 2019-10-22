@@ -31,7 +31,7 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
     private DrawerLayout drawLayout;
     private ActionBarDrawerToggle toggle;
 
-    int selectedMenu ;
+
 
 
 
@@ -58,15 +58,21 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView= findViewById(R.id.nav_view);
 
-
+        LoginActivity loginActivity= new  LoginActivity();
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(savedInstanceState==null )
+        if(savedInstanceState==null  )
         {
+            //loginActivity.changeDefaultFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
 
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CourseFragment()).commit();
+
         }
+
+
+
 
 
     }
@@ -111,11 +117,16 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             }
             else {
                 ParseUser.logOut();
+
+                //Intent intent = new Intent(CourseViewActivity.this,LoginActivity.class);
+                //startActivity(intent);
                 finish();
             }
         }
         return true;
     }
+
+
 
 
 
@@ -127,6 +138,7 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
                         // ...
 
                         finish();
+
                     }
                 });
     }

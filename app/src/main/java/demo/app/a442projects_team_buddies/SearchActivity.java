@@ -3,6 +3,8 @@ package demo.app.a442projects_team_buddies;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -79,7 +81,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-        ArrayAdapter arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
+        final ArrayAdapter arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
 
         courseListView.setAdapter(arrayAdapter);
 
@@ -92,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-
+                arrayAdapter.getFilter().filter(newText);
                 return false;
 
             }
@@ -103,7 +105,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getBaseContext(), arrayList.get(position), Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), arrayList.get(position)+" added on your course view", Toast.LENGTH_LONG).show();
                 //finishActivity(1);
 
                 ParseObject userCourseEnrolled= new ParseObject("User_Courses");
@@ -112,13 +114,14 @@ public class SearchActivity extends AppCompatActivity {
                 userCourseEnrolled.put("Course_Number",arrayList.get(position));
                 userCourseEnrolled.saveInBackground();
 
-                CourseViewActivity courseViewActivity=new CourseViewActivity();
 
-                courseViewActivity.selectedMenu= 1;
 
-                //Intent intent = new Intent(SearchActivity.this,CourseViewActivity.class);
-                //startActivity(intent);
+
                 finish();
+                //Intent intent = new Intent(SearchActivity.this,CourseViewActivity.class);
+                //startActivityForResult(intent,20);
+                //finishActivity(1);
+
 
 
             }
@@ -169,7 +172,11 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
     //I dont know what this is below but it made the thing crash
 
