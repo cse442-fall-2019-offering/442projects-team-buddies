@@ -12,4 +12,10 @@
     <color name="colorBlue1">#0000FF</color>
     <color name="solidCircle">#80FFFFFF</color>
     <color name="circleBorder">#30FFFFFF</color>
+    <color name="darkYellowHeader">#F1B929</color>
+    <color name="yellowHeader">#eece7e</color>
+    <color name="darkRedHeader">#740003</color>
+    <color name="redHeader">#BA4747</color>
+    <color name="darkGreenHeader">#398E71</color>
+    <color name="greenHeader">#66CDAA</color>
 </resources>
