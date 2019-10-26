@@ -26,6 +26,7 @@
             android:layout_marginLeft="1dp"
             android:layout_marginBottom="5dp"
             android:tint="@color/UbBlue"
+            android:visibility="invisible"
             android:layout_toRightOf="@id/searchView"
             android:src="@drawable/ic_control_point_black_24dp" />
         //android:onClick="addCourseManually"/>

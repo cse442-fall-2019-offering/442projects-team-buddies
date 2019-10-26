@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,8 @@ public class ProfileEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveChanges();
+                Toast.makeText(getBaseContext(), "Changes Saved", Toast.LENGTH_LONG).show();
+
                 finish();
             }
         });

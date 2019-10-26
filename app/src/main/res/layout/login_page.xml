@@ -92,6 +92,7 @@
                     android:textColor="@android:color/darker_gray"
                     android:id="@+id/keep_account_info"
                     android:text="Remember Me "
+                    android:visibility="invisible"
                     android:layout_marginLeft="35dp"
                     android:padding="8dp"/>
 
@@ -101,6 +102,7 @@
                     android:layout_toRightOf="@id/keep_account_info"
                     android:layout_below="@id/password"
                     android:text="  Forget your Password? "
+                    android:visibility="invisible"
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginTop="8.8dp"
                     android:clickable="true"
