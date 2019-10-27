@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ExampleViewHolder>{
     ArrayList<CourseViewItem> courseList;
+
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
             public TextView course;
             public TextView prof;
@@ -21,30 +22,39 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Exampl
 
             public ExampleViewHolder(@NonNull View itemView) {
                 super(itemView);
+
                 course = itemView.findViewById(R.id.nameOfClass);
                 prof= itemView.findViewById(R.id.profName);
                 studentCount=itemView.findViewById(R.id.numbOfStudents);
             }
-        }
-        public CardViewAdapter(ArrayList<CourseViewItem> courseList){
+    }
+
+    public CardViewAdapter(ArrayList<CourseViewItem> courseList)
+    {
             this.courseList=courseList;
 
+<<<<<<< HEAD
         }
 
 //    public CourseViewItem getCardAt(int position){
 //        return courseList.get(position);
 //    }
+=======
+    }
+>>>>>>> b1c995249ddbee60f44359d71fa0b04f3a9eced0
 
     @NonNull
     @Override
-    public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_sample, parent,false);
             ExampleViewHolder evh = new ExampleViewHolder(v);
              return evh;
-        }
+    }
 
     @Override
-    public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position)
+    {
                 CourseViewItem currentItem=courseList.get(position);
 
                 holder.course.setText(currentItem.getCourseName());
@@ -55,6 +65,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Exampl
 
     @Override
     public int getItemCount() {
+
         return courseList.size();
     }
 

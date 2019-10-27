@@ -21,6 +21,6 @@ public class CourseViewItem {
     }
 
     public String getInstructor() {
-        return instructor;
+         return instructor;
     }
 }
