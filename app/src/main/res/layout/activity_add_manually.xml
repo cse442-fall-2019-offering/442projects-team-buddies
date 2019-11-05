@@ -99,8 +99,7 @@
             android:text="Add Class"
             android:id="@+id/btn_joinClass"
             android:layout_marginLeft="150dp"
-            android:layout_marginRight="150dp"
-            android:onClick="addClass"/>
+            android:layout_marginRight="150dp" />
 
     </RelativeLayout>
 

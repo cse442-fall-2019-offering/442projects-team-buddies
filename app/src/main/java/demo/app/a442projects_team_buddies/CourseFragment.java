@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,19 +35,27 @@ public class CourseFragment extends Fragment {
 
     FloatingActionButton floatingActionButton;
 
-    CardView cardView;
+
     LinearLayout linearLayout;
 
+    private  CardView mCardView;
 
     private RecyclerView rView ;
     private RecyclerView.Adapter rViewAdapter;
     private RecyclerView.LayoutManager rViewLayoutManager;
+
     ArrayList<CourseViewItem> courses= new ArrayList<>();
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         final View inflate1= inflater.inflate(R.layout.activity_new_course_view,container,false);
+
+        // Shows enrollment list, when a specific card is clicked on the course view page
+        mCardView = inflate1.findViewById(R.id.mcard);
+
 
         floatingActionButton= inflate1.findViewById(R.id.fab);
 
@@ -90,7 +100,6 @@ public class CourseFragment extends Fragment {
                                     //rViewLayoutManager = new LinearLayoutManager();
                                     rViewAdapter = new CardViewAdapter(courses);
                                     rView.setLayoutManager(rViewLayoutManager);
-                                    rView.setAdapter(rViewAdapter);
 
                                 }
 
@@ -101,6 +110,18 @@ public class CourseFragment extends Fragment {
                     }
                 }
             }
+        });
+
+
+        // goes to member_list.xml when a designated course card is clicked
+        mCardView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+              Intent showEnrollmentList = new Intent(getActivity(),MemberListActivity.class);
+              // suppose current course name is sent to the member list
+              startActivity(showEnrollmentList);
+            };
         });
 
 
