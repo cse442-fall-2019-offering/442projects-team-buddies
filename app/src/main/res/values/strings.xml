@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">442projects-team-buddies</string>
+    <string name="app_name">Study Buddies</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="TitleWhichYouWantToDisplay">My Course</string>
+    <string name="parse_app_id">18f0b8b3f64fc2d7621627538afa4c34c30c1e95</string>
+    <string name="parse_client_key">f4d5911c96f8e3e047845c9ee4bf6e4da09284f6</string>
     <string name="Messages">Messages</string>
 </resources>

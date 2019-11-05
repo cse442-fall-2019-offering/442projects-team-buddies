@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sec_classNumber"
+        android:layout_marginTop="30dp">
+        <TextView
+            android:id="@+id/tag_Num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Number"
+            android:paddingTop="11dp"/>
+
+
+        <EditText
+            android:id="@+id/txt_cNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/tag_Num"
+            android:hint="*** Course Number ***"
+            android:inputType="text"
+            android:paddingRight="15dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="12dp"
+            android:enabled="false"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sec_className"
+        android:layout_below="@id/sec_classNumber"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:id="@+id/tag_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Name    "
+            android:paddingTop="11dp"/>
+
+        <EditText
+            android:id="@+id/txt_cName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/tag_Name"
+            android:hint="*** Course Name ***"
+            android:inputType="text"
+            android:paddingRight="125dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="12dp"
+            android:enabled="false"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mid_layer"
+        android:layout_below="@id/sec_className"
+        android:layout_marginTop="70dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Join"
+            android:id="@+id/btn_joinClass"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_layer"
+        android:layout_below="@id/mid_layer"
+        android:layout_marginTop="70dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Student info ... ex: user name etc."
+        android:background="@color/cardview_shadow_start_color"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

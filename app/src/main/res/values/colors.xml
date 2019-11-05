@@ -3,11 +3,19 @@
     <color name="UbBlue">#3073FB</color>
     <color name="UbGrey">#808080</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorMenuBlue">#54a2f0</color>
+    <color name="colorMenuDarkBlue">#286bad</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorDarkGray">#6C6C6C</color>
     <color name="colorBlue1">#0000FF</color>
+    <color name="solidCircle">#80FFFFFF</color>
+    <color name="circleBorder">#30FFFFFF</color>
+    <color name="darkYellowHeader">#F1B929</color>
+    <color name="yellowHeader">#eece7e</color>
+    <color name="darkRedHeader">#740003</color>
+    <color name="redHeader">#BA4747</color>
+    <color name="darkGreenHeader">#398E71</color>
+    <color name="greenHeader">#66CDAA</color>
 </resources>

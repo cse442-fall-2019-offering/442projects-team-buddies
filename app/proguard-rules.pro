@@ -19,3 +19,15 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepattributes SourceFile,LineNumberTable
+-keepnames class com.parse.** { *; }
+
+# Required for Parse
+-keepattributes *Annotation*
+-keepattributes Signature
+-dontwarn android.net.SSLCertificateSocketFactory
+-dontwarn android.app.Notification
+-dontwarn com.squareup.**
+-dontwarn okio.**
+
