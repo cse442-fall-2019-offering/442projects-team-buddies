@@ -20,9 +20,9 @@
             android:icon="@drawable/ic_chat"
             android:title="Chatrooms" />
         <item
-            android:id="@+id/activities"
+            android:id="@+id/toDoNav"
             android:icon="@drawable/ic_activity"
-            android:title="Activity" />
+            android:title="Todo List" />
         <item
             android:id="@+id/setting"
             android:icon="@drawable/ic_settings"

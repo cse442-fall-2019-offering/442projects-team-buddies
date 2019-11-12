@@ -106,6 +106,10 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             Intent intent = new Intent(this, settingsActivity.class);
             startActivity(intent);
         }
+        else if(menuItem.getItemId()==R.id.toDoNav) {
+            Intent intent = new Intent(this, todoListActivity.class);
+            startActivity(intent);
+        }
         else if(menuItem.getItemId()==R.id.logout )
         {
 
