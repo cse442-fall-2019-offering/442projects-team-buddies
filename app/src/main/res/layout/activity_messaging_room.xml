@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:background="@android:color/white"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/messageView"
+    android:transcriptMode="alwaysScroll"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_above="@+id/rlSend"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".MessagingRoom">
-
-    <TextView
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true" />
+<RelativeLayout
+    android:id="@+id/rlSend"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:layout_height="wrap_content" >
+    <EditText
         android:id="@+id/messageBeingSent"
-        android:layout_width="298dp"
-        android:layout_height="43dp"
-        android:text="Type Message here....."
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ListView
-        android:id="@+id/messageView"
-        android:layout_width="409dp"
-        android:layout_height="557dp"
-        android:hapticFeedbackEnabled="true"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/messageBeingSent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
+        android:layout_toLeftOf="@+id/sendMessageButton"
+        android:layout_alignBottom="@+id/sendMessageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:hint="@string/type_message_here"
+        android:inputType="textShortMessage"
+        android:imeOptions="actionSend"
+        android:layout_toStartOf="@+id/sendMessageButton" />
     <Button
         android:id="@+id/sendMessageButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/messageBeingSent"
-        app:layout_constraintTop_toBottomOf="@id/messageView" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:text="@string/send"
+        android:textSize="18sp"
+        android:paddingEnd="10dp"
+        android:layout_alignParentEnd="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+</RelativeLayout>

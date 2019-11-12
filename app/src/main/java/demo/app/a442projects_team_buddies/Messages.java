@@ -35,7 +35,6 @@ public class Messages extends AppCompatActivity {
     ImageView profImage;
    int x;
 
-
     private Integer getDrawableId(ImageView iv) {
         return (Integer) iv.getTag();
     }
@@ -166,7 +165,21 @@ public class Messages extends AppCompatActivity {
                     MyListAdapter mlAdapter = new MyListAdapter(Messages.this,friendList,images);
                     lv.setAdapter(mlAdapter);
 
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
+                        @Override
+                        public void onItemClick (AdapterView < ? > adapterView, View view,int i, long l){
+
+                            for (int x=0; x<friendList.size() ; x++) {
+                                if(x==i){
+                                    Intent intent = new Intent(Messages.this, MessagingRoom.class);
+                                    startActivity(intent);
+                                }
+                            }
+
+                        }
+
+                    });
                 }
 //
             }
@@ -179,21 +192,7 @@ public class Messages extends AppCompatActivity {
 
 
 
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//
-//                @Override
-//                public void onItemClick (AdapterView < ? > adapterView, View view,int i, long l){
-//
-//                 for (int x=0; x<friendList.length ; x++) {
-//                    if(x==i){
-//                    Intent intent = new Intent(Messages.this, MessagingRoom.class);
-//                    startActivity(intent);
-//                    }
-//                }
-//
-//            }
-//
-//        });
+
 
     }
 //
