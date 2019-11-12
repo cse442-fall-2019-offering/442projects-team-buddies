@@ -8,20 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class MyListAdapter extends ArrayAdapter<String> {
     private final Activity users;
-    private final String[] progNames;
-    private final Integer[] progImages;
+    private final ArrayList<String> progNames;
+    private final ArrayList<Integer> progImages;
 
 
-    public MyListAdapter(Activity users, String[] progNames, Integer[] progImages) {
+
+    public MyListAdapter(Activity users, ArrayList<String> progNames, ArrayList<Integer> progImages) {
         super(users, R.layout.message_list,progNames);
         this.users = users;
         this.progNames = progNames;
         this.progImages = progImages;
+   //     this.x = x;
     }
 
     @NonNull
@@ -32,8 +36,8 @@ public class MyListAdapter extends ArrayAdapter<String> {
         TextView txtName = (TextView)(rowView.findViewById(R.id.userInList));
         ImageView usrImage =(ImageView)(rowView.findViewById(R.id.userImageInList));
 
-        txtName.setText(progNames[position]);
-        usrImage.setImageResource(progImages[position]);
+        txtName.setText(progNames.get(position));
+        usrImage.setImageResource(progImages.get(position));
         return rowView;
     }
 }

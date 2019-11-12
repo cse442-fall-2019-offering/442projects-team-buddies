@@ -47,8 +47,10 @@ package="demo.app.a442projects_team_buddies">
 
     <activity android:name=".SearchActivity"/>
     <activity android:name=".AddManuallyActivity"/>
+    <activity android:name=".Messages"
+        android:parentActivityName=".CourseViewActivity"/>
     <activity android:name=".MessagingRoom"/>
-    <activity android:name=".Messages"/>
+
 </application>
 
 </manifest>
