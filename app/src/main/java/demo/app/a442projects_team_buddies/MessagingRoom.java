@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -63,6 +64,7 @@ public class MessagingRoom extends AppCompatActivity {
                 Chatting message = new Chatting();
                 message.setBody(data);
                 message.setUserId(ParseUser.getCurrentUser().getObjectId());
+                messages.add(message);
                 message.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -108,7 +110,16 @@ public class MessagingRoom extends AppCompatActivity {
             }
         });
     }
-
+    // Create a handler which can run code periodically
+    static final int POLL_INTERVAL = 1000; // milliseconds
+    Handler myHandler = new Handler();  // android.os.Handler
+    Runnable mRefreshMessagesRunnable = new Runnable() {
+        @Override
+        public void run() {
+            refreshMessages();
+            myHandler.postDelayed(this, POLL_INTERVAL);
+        }
+    };
 
 
 
@@ -122,6 +133,8 @@ public class MessagingRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging_room);
         startWithCurrentUser();
+
+        myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
 
     }
 }
