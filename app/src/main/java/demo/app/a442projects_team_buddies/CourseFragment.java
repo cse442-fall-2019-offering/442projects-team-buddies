@@ -93,44 +93,6 @@ public class CourseFragment extends Fragment {
                                     rView.setLayoutManager(rViewLayoutManager);
                                     rView.setAdapter(rViewAdapter);
 
-                                    //this listener will redirect to Student profile those who are enrolled in that course
-                                    rViewAdapter.setOnItemClickListener(new CardViewAdapter.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(int position) {
-                                           String s= courses.get(position).getStudentCount();
-                                           s= s.substring(12);
-                                           Toast.makeText(getContext(), s+" Pressed", Toast.LENGTH_LONG).show();
-
-                                        }
-                                         //this will delete the cardView from the database
-                                        @Override
-                                        public void onDeleteClick(int position) {
-                                            String s= courses.get(position).getStudentCount();
-                                            s= s.substring(12);
-                                            removeCourse(position);
-                                            ParseQuery<ParseObject> userCourse= ParseQuery.getQuery("User_Courses");
-
-
-                                            userCourse.whereEqualTo("Course_Number",s);
-                                            userCourse.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
-
-                                            userCourse.findInBackground(new FindCallback<ParseObject>() {
-                                                @Override
-                                                public void done(List<ParseObject> objects, ParseException e) {
-                                                    for (ParseObject obj:objects)
-                                                    {
-                                                        obj.deleteInBackground();
-
-
-
-                                                    }
-                                                }
-                                            });
-
-
-                                        }
-                                    });
-                                    //------------------------------------------------------------------------------------
 
 
                                 }
