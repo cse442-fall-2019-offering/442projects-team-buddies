@@ -101,6 +101,10 @@ public class CourseFragment extends Fragment {
                                             s= s.substring(12);
                                             Toast.makeText(getContext(), s+" Pressed", Toast.LENGTH_LONG).show();
 
+                                            Intent intent= new Intent(getActivity(),TabActivity.class);
+                                            intent.putExtra("Course",s);
+
+                                            startActivity(intent);
                                         }
                                         //this will delete the cardView from the database
                                         @Override

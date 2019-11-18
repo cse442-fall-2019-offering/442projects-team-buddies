@@ -2,33 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="demo.app.a442projects_team_buddies">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-
         android:name=".App"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/defaultAppTheme">
+        <activity
+            android:name=".TabActivity"
+            android:label="@string/title_activity_tab"
+            android:theme="@style/defaultAppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="@string/parse_app_id" />
-
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
         <meta-data
             android:name="com.parse.SERVER_URL"
-            android:value="http://3.15.229.128:80/parse/"></meta-data>
+            android:value="http://3.15.229.128:80/parse/" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,17 +36,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CourseViewActivity"/>
-        <activity android:name=".ProfileActivity"
-            android:parentActivityName=".CourseViewActivity"/>
-        <activity android:name=".ProfileEditActivity"
-            android:parentActivityName=".ProfileActivity"/>
-        <activity android:name=".settingsActivity"
-            android:parentActivityName=".CourseViewActivity"/>
-        <activity android:name=".SignupActivity"/>
-
-        <activity android:name=".SearchActivity"/>
-        <activity android:name=".AddManuallyActivity"/>
+        <activity android:name=".CourseViewActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".CourseViewActivity" />
+        <activity
+            android:name=".ProfileEditActivity"
+            android:parentActivityName=".ProfileActivity" />
+        <activity
+            android:name=".settingsActivity"
+            android:parentActivityName=".CourseViewActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".AddManuallyActivity" />
     </application>
 
 </manifest>
