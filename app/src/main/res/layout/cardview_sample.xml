@@ -48,5 +48,15 @@
             android:textStyle="bold">
 
         </TextView>
+
+        <ImageView
+            android:id="@+id/deleteCourse"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_delete"
+            android:layout_below="@+id/profName"
+            android:layout_marginLeft="220dp">
+
+        </ImageView>
         </RelativeLayout>
 </androidx.cardview.widget.CardView>
