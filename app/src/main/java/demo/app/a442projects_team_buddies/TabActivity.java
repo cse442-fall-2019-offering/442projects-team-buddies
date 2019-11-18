@@ -38,6 +38,10 @@ public class TabActivity extends AppCompatActivity {
             }
         });*/
 
+        Intent intent= getIntent();
+
+        String id= intent.getStringExtra("Course");
+
 
     }
 

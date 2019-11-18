@@ -48,6 +48,7 @@
             android:parentActivityName=".CourseViewActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".SearchActivity" />
+
         <activity android:name=".AddManuallyActivity" />
     </application>
 

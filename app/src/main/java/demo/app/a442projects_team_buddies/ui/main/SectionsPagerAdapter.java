@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import demo.app.a442projects_team_buddies.Frag2;
 import demo.app.a442projects_team_buddies.R;
+import demo.app.a442projects_team_buddies.StudentListFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -29,7 +31,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        Fragment fragment= null;
+        switch (position){
+            case 0: fragment= new StudentListFragment();
+                break;
+            case 1: fragment= new Frag2();
+                break;
+        }
+
+        return fragment;
     }
 
     @Nullable
