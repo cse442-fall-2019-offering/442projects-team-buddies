@@ -33,15 +33,12 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Exampl
     {
             this.courseList=courseList;
 
-<<<<<<< HEAD
         }
 
 //    public CourseViewItem getCardAt(int position){
 //        return courseList.get(position);
 //    }
-=======
-    }
->>>>>>> b1c995249ddbee60f44359d71fa0b04f3a9eced0
+//    }
 
     @NonNull
     @Override

@@ -28,14 +28,16 @@
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="http://3.15.229.128:80/parse/"></meta-data>
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".LoginActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".NewCourseViewActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".CourseViewActivity"/>
+
         <activity android:name=".SignupActivity"/>
         <activity android:name=".ProfileActivity"/>
     </application>
