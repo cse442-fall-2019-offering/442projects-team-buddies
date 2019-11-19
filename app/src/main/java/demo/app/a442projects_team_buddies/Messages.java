@@ -173,6 +173,8 @@ public class Messages extends AppCompatActivity {
                             for (int x=0; x<friendList.size() ; x++) {
                                 if(x==i){
                                     Intent intent = new Intent(Messages.this, MessagingRoom.class);
+                                    String friendname = friendList.get(x);
+                                    intent.putExtra("friendsObjectId",friendname);
                                     startActivity(intent);
                                 }
                             }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,11 +33,15 @@ public class MessagingRoom extends AppCompatActivity {
     MessageRoomAdapter mAdapter;
     // Keep track of initial load to scroll to the bottom of the ListView
     boolean mFirstLoad;
+    private static String sFriendsId;
+    private static String sUserId;
+
 
 
     // Get the userId from the cached currentUser object
     void startWithCurrentUser() {
         setupMessagePosting();
+
     }
 
     // Setup button event handler which posts the entered message to Parse
@@ -48,6 +53,9 @@ public class MessagingRoom extends AppCompatActivity {
         messages = new ArrayList<>();
         mFirstLoad = true;
         final String userId = ParseUser.getCurrentUser().getObjectId();
+        sUserId=userId;
+
+
         mAdapter = new MessageRoomAdapter(MessagingRoom.this, userId, messages);
         chatrv.setAdapter(mAdapter);
 
@@ -64,6 +72,28 @@ public class MessagingRoom extends AppCompatActivity {
                 Chatting message = new Chatting();
                 message.setBody(data);
                 message.setUserId(ParseUser.getCurrentUser().getObjectId());
+//                Intent callingIntent = getIntent();
+//                String friend = callingIntent.getExtras().getString("friendsObject");
+//
+//                ParseQuery<ParseUser> query = ParseUser.getQuery();
+//                query.whereEqualTo("username", friend);
+//                query.findInBackground(new FindCallback<ParseUser>() {
+//                    public void done(List<ParseUser> objects, ParseException e) {
+//                        if (e == null) {
+//                            for (int i = 0; i< objects.size();i++){
+//                                sFriendsId=objects.get(i).getObjectId();
+//                                System.out.println(sFriendsId);
+//
+//                            }
+//                            // The query was successful.
+//                        } else {
+//                            // Something went wrong.
+//                        }
+//                    }
+//                });
+             //   System.out.println("This is final "+sFriendsId);
+                sFriendsId="3AAW4SAn8x";
+                message.setReceiverId(sFriendsId);
                 messages.add(message);
                 message.saveInBackground(new SaveCallback() {
                     @Override
@@ -86,8 +116,27 @@ public class MessagingRoom extends AppCompatActivity {
 
     // Query messages from Parse so we can load them into the chat adapter
     void refreshMessages() {
+        ParseQuery<Chatting> sentMessagesQuery = ParseQuery.getQuery(Chatting.class);
+        sentMessagesQuery.whereEqualTo("userId", sUserId);
+        sentMessagesQuery.whereEqualTo("receiverId", sFriendsId);
+
+        // Receiver Messages Query
+        ParseQuery<Chatting> receiveMessagesQuery = ParseQuery.getQuery(Chatting.class);
+        receiveMessagesQuery.whereEqualTo("userId", sFriendsId);
+        receiveMessagesQuery.whereEqualTo("receiverId", sUserId); //receiver is me (current user)
+
+        // Combine the queries
+        List<ParseQuery<Chatting>> queries = new ArrayList<>();
+        queries.add(sentMessagesQuery);
+        queries.add(receiveMessagesQuery);
+
+
+
+
+
         // Construct query to execute
-        ParseQuery<Chatting> query = ParseQuery.getQuery(Chatting.class);
+        ParseQuery<Chatting> query = ParseQuery.or(queries);
+
         // Configure limit and sort order
         query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
 
