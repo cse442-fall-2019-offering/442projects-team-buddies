@@ -102,6 +102,8 @@ public class CourseFragment extends Fragment {
                                             Toast.makeText(getContext(), s+" Pressed", Toast.LENGTH_LONG).show();
 
                                             Intent intent= new Intent(getActivity(),TabActivity.class);
+
+
                                             intent.putExtra("Course",s);
 
                                             startActivity(intent);

@@ -24,6 +24,8 @@ import java.util.List;
 
 public class StudentListFragment extends Fragment {
 
+    String Id;
+
     private RecyclerView sView ;
     private StudentViewAdapter sViewAdapter;
     private RecyclerView.LayoutManager sViewLayoutManager;
@@ -34,25 +36,94 @@ public class StudentListFragment extends Fragment {
         final View inflate1= inflater.inflate(R.layout.student_view,container,false);
 
         sView= inflate1.findViewById(R.id.recyclerView);
-        sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+
         sViewLayoutManager = new LinearLayoutManager(getContext());
 
-        studentList.add(new StudentViewItem("vikram"));
-        studentList.add(new StudentViewItem("user1"));
-        studentList.add(new StudentViewItem("user2"));
+
+        Id= this.getArguments().getString("Course").toString();
 
 
+        ParseQuery<ParseObject> users= ParseQuery.getQuery("User_Courses");
 
-        sViewAdapter = new StudentViewAdapter(studentList);
-        sView.setLayoutManager(sViewLayoutManager);
-        sView.setAdapter(sViewAdapter);
 
-        sViewAdapter.setOnItemClickListener(new StudentViewAdapter.OnItemClickListener() {
+        users.whereEqualTo("Course_Number",Id);
+
+        users.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void onItemClick(int position) {
+            public void done(List<ParseObject> objects, ParseException e) {
+
+
+                if(e==null && objects.size()>0)
+                {
+
+                    for(ParseObject obj: objects) {
+                       final String username= obj.getString("username");
+                       if(username!= ParseUser.getCurrentUser().getUsername()) {
+
+
+
+                           ParseQuery<ParseUser> user = ParseUser.getQuery();
+
+                           user.whereEqualTo("username",username);
+                           user.findInBackground(new FindCallback<ParseUser>() {
+                               @Override
+                               public void done(List<ParseUser> objects, ParseException e) {
+                                   if (e == null && objects.size() > 0) {
+                                       for (final ParseUser user1 : objects) {
+                                           if (user1.getUsername()!= ParseUser.getCurrentUser().getUsername()) {
+                                               Toast.makeText(getContext(), " Pressed++++++++++++++++++++"+ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_LONG).show();
+
+
+                                               studentList.add(new StudentViewItem(user1.getUsername().toString()));
+
+
+                                               sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+                                               sViewAdapter = new StudentViewAdapter(studentList);
+                                               sView.setLayoutManager(sViewLayoutManager);
+                                               sView.setAdapter(sViewAdapter);
+
+                                               sViewAdapter.setOnItemClickListener(new StudentViewAdapter.OnItemClickListener() {
+                                                   @Override
+                                                   public void onItemClick(int position) {
+                                                       Toast.makeText(getContext(), user1.getUsername() + " Pressed", Toast.LENGTH_LONG).show();
+                                                   }
+                                               });
+                                           }
+                                       }
+                                   }
+                                   else{
+                                       Toast.makeText(getContext(), " Pressed++++++++++++++++++++"+username, Toast.LENGTH_LONG).show();
+
+                                   }
+                               }
+                           });
+                       }
+                       else
+                       {
+                           studentList.add(new StudentViewItem("vikram"));
+
+
+                           sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+                           sViewAdapter = new StudentViewAdapter(studentList);
+                           sView.setLayoutManager(sViewLayoutManager);
+                           sView.setAdapter(sViewAdapter);
+                       }
+                    }
+                }
+                else
+                {
+
+                }
+
 
             }
         });
+
+
+
+
+
+
 
 
 

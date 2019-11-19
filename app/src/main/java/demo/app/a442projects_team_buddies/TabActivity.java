@@ -23,7 +23,12 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        Intent intent= getIntent();
+
+        String id= intent.getStringExtra("Course");
+
+
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(),id);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
@@ -38,9 +43,7 @@ public class TabActivity extends AppCompatActivity {
             }
         });*/
 
-        Intent intent= getIntent();
 
-        String id= intent.getStringExtra("Course");
 
 
     }
