@@ -11,18 +11,36 @@
             android:title="My Profile" />
         <item
             android:id="@+id/m_course"
-            android:icon="@drawable/ic_person"
+            android:icon="@drawable/ic_my_class"
             android:title="My Course">
-
         </item>
+
         <item
             android:id="@+id/m_chatrooms"
             android:icon="@drawable/ic_chat"
             android:title="Chatrooms" />
+
         <item
             android:id="@+id/activities"
             android:icon="@drawable/ic_activity"
             android:title="Activity" />
+
+        <item
+            android:id="@+id/btn_makeTest"
+            android:icon="@drawable/ic_create_test"
+            android:title="Create Test"
+            />
+        <item
+            android:id="@+id/btn_practiceTest"
+            android:icon="@drawable/ic_practice_test"
+            android:title="Practice Test"
+            />
+        <item
+            android:id="@+id/btn_shareTest"
+            android:icon="@drawable/ic_share_test"
+            android:title="Share Test"
+            />
+
         <item
             android:id="@+id/setting"
             android:icon="@drawable/ic_settings"
