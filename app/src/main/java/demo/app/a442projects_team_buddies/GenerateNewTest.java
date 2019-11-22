@@ -31,6 +31,8 @@ public class GenerateNewTest extends AppCompatDialogFragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // save the data within this file name and upload it to the back end
                                 String savedFileName = fileName.getText().toString();
+                                // ** I need to save this fileName at somewhere, then I have to retrieve it at the practicing a practice test UI
+
                             }
 
                         }

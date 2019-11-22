@@ -123,9 +123,18 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         }
         else if(menuItem.getItemId() == R.id.m_makeTest)
         {
+            // this is the page where you can create a practice test, but the following new activity won't start running
+            // I haven't figure out why
             Intent intent = new Intent(this, MakeTestActivity.class);
             startActivity(intent);
         }
+
+        else if(menuItem.getItemId() == R.id.m_practiceTest)
+        {
+            Intent intent = new Intent(this, PracticeTestActivity.class);
+            startActivity(intent);
+        }
+
         else if(menuItem.getItemId()==R.id.logout )
         {
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
