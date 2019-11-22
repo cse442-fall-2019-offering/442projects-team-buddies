@@ -121,10 +121,13 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             Intent intent = new Intent(this, settingsActivity.class);
             startActivity(intent);
         }
+        else if(menuItem.getItemId() == R.id.m_makeTest)
+        {
+            Intent intent = new Intent(this, MakeTestActivity.class);
+            startActivity(intent);
+        }
         else if(menuItem.getItemId()==R.id.logout )
         {
-
-
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
             if (account!=null)
             {

@@ -26,17 +26,17 @@
             android:title="Activity" />
 
         <item
-            android:id="@+id/btn_makeTest"
+            android:id="@+id/m_makeTest"
             android:icon="@drawable/ic_create_test"
             android:title="Create Test"
             />
         <item
-            android:id="@+id/btn_practiceTest"
+            android:id="@+id/m_practiceTest"
             android:icon="@drawable/ic_practice_test"
             android:title="Practice Test"
             />
         <item
-            android:id="@+id/btn_shareTest"
+            android:id="@+id/m_shareTest"
             android:icon="@drawable/ic_share_test"
             android:title="Share Test"
             />
