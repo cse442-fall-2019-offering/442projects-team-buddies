@@ -35,11 +35,6 @@
             android:icon="@drawable/ic_practice_test"
             android:title="Practice Test"
             />
-        <item
-            android:id="@+id/m_shareTest"
-            android:icon="@drawable/ic_share_test"
-            android:title="Share Test"
-            />
 
         <item
             android:id="@+id/setting"
