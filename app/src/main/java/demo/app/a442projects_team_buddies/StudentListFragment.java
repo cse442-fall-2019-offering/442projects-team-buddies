@@ -1,6 +1,8 @@
 package demo.app.a442projects_team_buddies;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,22 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentListFragment extends Fragment {
 
     String Id;
+    Bitmap bitmap;
 
     private RecyclerView sView ;
     private StudentViewAdapter sViewAdapter;
     private RecyclerView.LayoutManager sViewLayoutManager;
-    ArrayList<StudentViewItem> studentList= new ArrayList<>();
+    ArrayList<StudentViewItem> studentList;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +44,8 @@ public class StudentListFragment extends Fragment {
         sView= inflate1.findViewById(R.id.recyclerView);
 
         sViewLayoutManager = new LinearLayoutManager(getContext());
+        studentList= new ArrayList<StudentViewItem>();
+        //bitmap= null;
 
 
         Id= this.getArguments().getString("Course").toString();
@@ -58,38 +66,80 @@ public class StudentListFragment extends Fragment {
 
                     for(ParseObject obj: objects) {
                        final String username= obj.getString("username");
-                       if(username!= ParseUser.getCurrentUser().getUsername()) {
+                       if(!username.equals(ParseUser.getCurrentUser().getUsername())) {
 
 
 
                            ParseQuery<ParseUser> user = ParseUser.getQuery();
 
                            user.whereEqualTo("username",username);
+
                            user.findInBackground(new FindCallback<ParseUser>() {
                                @Override
                                public void done(List<ParseUser> objects, ParseException e) {
                                    if (e == null && objects.size() > 0) {
                                        for (final ParseUser user1 : objects) {
-                                           if (user1.getUsername()!= ParseUser.getCurrentUser().getUsername()) {
-                                               Toast.makeText(getContext(), " Pressed++++++++++++++++++++"+ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_LONG).show();
+
+                                               //Toast.makeText(getContext(), " Pressed++++++++++++++++++++"+ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_LONG).show();
+                                           bitmap=null;
 
 
-                                               studentList.add(new StudentViewItem(user1.getUsername().toString()));
+                                           try {
 
 
-                                               sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
-                                               sViewAdapter = new StudentViewAdapter(studentList);
-                                               sView.setLayoutManager(sViewLayoutManager);
-                                               sView.setAdapter(sViewAdapter);
+                                               ParseFile file = (ParseFile) user1.get("Profile_Image");
 
-                                               sViewAdapter.setOnItemClickListener(new StudentViewAdapter.OnItemClickListener() {
+
+                                               file.getDataInBackground(new GetDataCallback() {
                                                    @Override
-                                                   public void onItemClick(int position) {
-                                                       Toast.makeText(getContext(), user1.getUsername() + " Pressed", Toast.LENGTH_LONG).show();
+                                                   public void done(byte[] data, ParseException e) {
+
+
+                                                       if (e == null && data != null) {
+                                                           bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                           Toast.makeText(getContext(), " Profile picture set", Toast.LENGTH_LONG).show();
+
+                                                           studentList.add(new StudentViewItem(user1.getUsername(),bitmap));
+
+                                                           //profileImage.setImageBitmap(bitmap);
+                                                       } else {
+                                                           Toast.makeText(getContext(), " Profile picture is not set", Toast.LENGTH_LONG).show();
+                                                           studentList.add(new StudentViewItem(user1.getUsername(),bitmap));
+
+
+                                                       }
+
                                                    }
                                                });
+
                                            }
+                                           catch (Exception ex)
+                                           {
+                                               //Toast.makeText(getContext(), " Profile picture is not set"+ex, Toast.LENGTH_LONG).show();
+                                               //bitmap= null;
+                                               studentList.add(new StudentViewItem(user1.getUsername(),bitmap));
+
+                                           }
+                                           //studentList.add(new StudentViewItem(user1.getUsername().toString(),bitmap));
+
+
+
+
+
                                        }
+                                       sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+                                       sViewAdapter = new StudentViewAdapter(studentList);
+                                       sView.setLayoutManager(sViewLayoutManager);
+                                       sView.setAdapter(sViewAdapter);
+
+                                       sViewAdapter.setOnItemClickListener(new StudentViewAdapter.OnItemClickListener() {
+                                           @Override
+                                           public void onItemClick(int position) {
+                                               String s= studentList.get(position).getStudentName();
+
+                                               Toast.makeText(getContext(), s + " Pressed", Toast.LENGTH_LONG).show();
+                                           }
+                                       });
                                    }
                                    else{
                                        Toast.makeText(getContext(), " Pressed++++++++++++++++++++"+username, Toast.LENGTH_LONG).show();
@@ -100,18 +150,13 @@ public class StudentListFragment extends Fragment {
                        }
                        else
                        {
-                           studentList.add(new StudentViewItem("vikram"));
 
-
-                           sView.setHasFixedSize(true);  // if the view changes in size then comment out this line
-                           sViewAdapter = new StudentViewAdapter(studentList);
-                           sView.setLayoutManager(sViewLayoutManager);
-                           sView.setAdapter(sViewAdapter);
                        }
                     }
                 }
                 else
                 {
+                    Toast.makeText(inflate1.getContext(), "no user enrolled in this course", Toast.LENGTH_LONG).show();
 
                 }
 

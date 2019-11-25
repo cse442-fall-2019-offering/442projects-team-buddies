@@ -17,7 +17,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/profile"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
@@ -31,7 +31,7 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_image"
+            android:layout_below="@+id/profile"
             android:layout_centerInParent="true"
             android:text="UserName"
             android:textSize="30dp">

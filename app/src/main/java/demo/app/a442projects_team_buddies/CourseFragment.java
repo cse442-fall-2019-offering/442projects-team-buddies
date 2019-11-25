@@ -99,7 +99,7 @@ public class CourseFragment extends Fragment {
                                         public void onItemClick(int position) {
                                             String s= courses.get(position).getStudentCount();
                                             s= s.substring(12);
-                                            Toast.makeText(getContext(), s+" Pressed", Toast.LENGTH_LONG).show();
+                                            //Toast.makeText(getContext(), s+" Pressed", Toast.LENGTH_LONG).show();
 
                                             Intent intent= new Intent(getActivity(),TabActivity.class);
 

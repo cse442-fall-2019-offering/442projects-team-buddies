@@ -101,6 +101,8 @@ public class ProfileFragment extends Fragment {
 
                         profileImage.setImageBitmap(bitmap);
                     } else {
+                        Toast.makeText(getContext(), " Profile picture is not set", Toast.LENGTH_LONG).show();
+
 
                     }
                 }

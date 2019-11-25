@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.ExampleViewHolder>{
     ArrayList<StudentViewItem> studentList;
 
@@ -30,12 +32,14 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
             public TextView username;
+            public CircleImageView profileImage;
 
 
             public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
                 super(itemView);
 
                 username = itemView.findViewById(R.id.username);
+                profileImage= itemView.findViewById(R.id.profile);
 
 
                 itemView.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +80,10 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
                 StudentViewItem currentItem=studentList.get(position);
 
                 holder.username.setText(currentItem.getStudentName());
+                 if (currentItem.getStudentPicture()!= null){
 
+                    holder.profileImage.setImageBitmap(currentItem.getStudentPicture());
+                 }
 
     }
 
