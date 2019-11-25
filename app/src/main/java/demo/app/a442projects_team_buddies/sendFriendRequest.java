@@ -25,13 +25,13 @@ public class sendFriendRequest extends AppCompatActivity {
     // get username, id , major , description , profile
     private TextView user_name, user_email, user_desc, user_major;
     private CircleImageView user_profile;
-    private Button btn_sendRequest;
+    private Button add;
     ParseObject cur_user;
 //    ParseQuery<ParseObject> classmate_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_friend_request);
+        setContentView(R.layout.user_profileview);
 
 
 
@@ -84,7 +84,7 @@ public class sendFriendRequest extends AppCompatActivity {
 
 
         // Send out the friend request
-        btn_sendRequest.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
