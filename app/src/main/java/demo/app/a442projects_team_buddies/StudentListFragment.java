@@ -138,6 +138,9 @@ public class StudentListFragment extends Fragment {
                                                String s= studentList.get(position).getStudentName();
 
                                                Toast.makeText(getContext(), s + " Pressed", Toast.LENGTH_LONG).show();
+                                               Intent intent= new Intent(getActivity(),sendFriendRequest.class);
+                                               intent.putExtra("username",s);
+                                               startActivity(intent);
                                            }
                                        });
                                    }

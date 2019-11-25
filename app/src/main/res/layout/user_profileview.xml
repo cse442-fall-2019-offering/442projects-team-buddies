@@ -77,6 +77,16 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:id="@+id/classmate_desc"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="favourite study location"
+                android:textColor="#000000"
+                android:textStyle="normal"
+                android:textSize="21sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:id="@+id/classmate_loc"/>
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -96,6 +106,7 @@
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 android:textAllCaps="false"
+                android:clickable="true"
                 android:background="@drawable/custom_button"
                 android:text="Add"
                 />
