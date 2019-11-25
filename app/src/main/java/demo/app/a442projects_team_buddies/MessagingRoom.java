@@ -60,8 +60,8 @@ public class MessagingRoom extends AppCompatActivity {
 
 
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MessagingRoom.this);
+       // linearLayoutManager.setReverseLayout(true);
         chatrv.setLayoutManager(linearLayoutManager);
-        linearLayoutManager.setReverseLayout(true);
 
 
         // When send button is clicked, create message object on Parse
@@ -98,6 +98,7 @@ public class MessagingRoom extends AppCompatActivity {
 
 
     void refreshMessages() {
+        // Sent Messages Query
         ParseQuery<Chatting> sentMessagesQuery = ParseQuery.getQuery(Chatting.class);
         sentMessagesQuery.whereEqualTo("userId", sUserId);
         sentMessagesQuery.whereEqualTo("receiverId", sFriendsId);
@@ -153,7 +154,8 @@ public class MessagingRoom extends AppCompatActivity {
 
             startWithCurrentUser();
         myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
-       }
+
+    }
 
 }
 
