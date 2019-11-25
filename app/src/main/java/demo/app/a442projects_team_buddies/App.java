@@ -19,6 +19,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        ParseObject.registerSubclass(Chatting.class);           // for messaging
+
+
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("18f0b8b3f64fc2d7621627538afa4c34c30c1e95")
                 // if defined
@@ -34,7 +37,6 @@ public class App extends Application {
         defaultACL.setPublicWriteAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
-        ParseObject.registerSubclass(Chatting.class);           // for messaging
 
         /************ chat application part ***********/
         // Use for monitoring Parse network traffic
