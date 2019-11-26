@@ -40,70 +40,6 @@ public class Messages extends AppCompatActivity {
     }
 
 
-    private void loadImages(ParseFile thumbnail, final ImageView img) {
-            try {
-
-                if (thumbnail != null) {
-                    thumbnail.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            if (e == null) {
-                                Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                     img.setImageBitmap(bmp); //or comment out next 2 line and use this
-//                                BitmapDrawable bitmapDrawable = new BitmapDrawable(bmp); //remove string.valueof and fix if it doesnt work
-//                                img.setImageDrawable(bitmapDrawable);
-                            } else {
-                            }
-                        }
-                    });
-                } else {
-                    //img.setImageResource(R.drawable.photo_circle);
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-        }// load image
-
-
-
-
-
-
-
-
-    public void getImages(ArrayList<Integer> images, ParseUser user1 ){
-        //int i =0;
-       // for(ParseObject id: objectids){
-         //   String idToString = id.toString();
-          // ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-            //query.getInBackground(objectids, new GetCallback<ParseObject>() {
-              //  public void done(ParseObject object, ParseException e) {
-                //    if (e == null) {
-                  // //     object.getString("UserImage");  // might have to change field to int
-                        try {
-                            ParseFile image = user1.getParseFile("profile_image");
-                            profImage = findViewById(R.id.icon); //R.id.profile_image
-
-                            loadImages(image, profImage);
-                          //  images.add(getDrawableId(profImage));
-                            images.add(R.drawable.photo_circle);
-
-                        }
-                        catch (Exception e){
-
-
-                        }
-//                    }
-//                }
-//            });
-
-           // i++;
-        }
-
-   // }
-
 
 
 
@@ -118,8 +54,8 @@ public class Messages extends AppCompatActivity {
              images.add(R.drawable.photo_circle);
         }
 
-        ///////adding the friend pictures
-
+        /***********adding the friend pictures functioanlity here vikram *************/
+                    //add here
     }
 
 
@@ -136,25 +72,7 @@ public class Messages extends AppCompatActivity {
                 if (e == null) {
 
                         addFriends(fL.size(),fL);
-//                     images = new Integer[fL.size()];
-//                     friendList = new ArrayList<>();
-//                   for(int i =0 ; i< fL.size() ; i++){
-//                        images[i]= R.drawable.photo_circle;
-//
-//                        friendList.add("user"+(i+1));
-//                    }
 
-
-
-
-
-
-
-//            String userFriend= person.toString();
-//            friendList[i]=userFriend;
-                        //images[i]= R.drawable.photo_circle;  // needs to change for each user picture
-                        // getImages(images, objectids);
-                        //i++;
 
 
 

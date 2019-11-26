@@ -69,13 +69,16 @@ public class MessagingRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String data = messageInput.getText().toString();
-                String receiver = getIntent().getStringExtra("friendsObjectId");
-                sUserId=ParseUser.getCurrentUser().getUsername();
-                sFriendsId=receiver;
-                Chatting message = new Chatting();
-                message.setBody(data);
-                message.setUserId(ParseUser.getCurrentUser().getUsername());
-                message.setReceiverId(receiver);
+                if(data.length()>0) {
+
+
+                    String receiver = getIntent().getStringExtra("friendsObjectId");
+                    sUserId = ParseUser.getCurrentUser().getUsername();
+                    sFriendsId = receiver;
+                    Chatting message = new Chatting();
+                    message.setBody(data);
+                    message.setUserId(ParseUser.getCurrentUser().getUsername());
+                    message.setReceiverId(receiver);
 
                 message.saveInBackground(new SaveCallback() {
                     @Override
@@ -90,8 +93,9 @@ public class MessagingRoom extends AppCompatActivity {
                 });
                 messageInput.setText(null);
             }
-        });
+        }});
     }
+
     void startWithCurrentUser() {
         setupMessagePosting();
     }
