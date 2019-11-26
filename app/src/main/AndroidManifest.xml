@@ -14,10 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/defaultAppTheme">
+        <activity android:name=".ChatRoomActivity"></activity>
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"
-            android:theme="@style/defaultAppTheme.NoActionBar"></activity>
+            android:theme="@style/defaultAppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.parse.APPLICATION_ID"
@@ -46,11 +47,14 @@
         <activity
             android:name=".settingsActivity"
             android:parentActivityName=".CourseViewActivity" />
+        <activity
+            android:name=".FriendListActivity"
+            android:parentActivityName=".CourseViewActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".sendFriendRequest"
-            android:parentActivityName=".CourseViewActivity"/>
-
+        <activity
+            android:name=".sendFriendRequest"
+            android:parentActivityName=".CourseViewActivity" />
         <activity android:name=".AddManuallyActivity" />
     </application>
 

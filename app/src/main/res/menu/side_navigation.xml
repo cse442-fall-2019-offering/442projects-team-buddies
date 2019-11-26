@@ -15,14 +15,14 @@
             android:title="My Courses">
 
         </item>
-<!--        <item-->
-<!--            android:id="@+id/m_chatrooms"-->
-<!--            android:icon="@drawable/ic_chat"-->
-<!--            android:title="Chatrooms" />-->
-<!--        <item-->
-<!--            android:id="@+id/activities"-->
-<!--            android:icon="@drawable/ic_activity"-->
-<!--            android:title="Activity" />-->
+        <item
+            android:id="@+id/m_chatrooms"
+            android:icon="@drawable/ic_chat"
+            android:title="Chatrooms" />
+        <item
+            android:id="@+id/activities"
+            android:icon="@drawable/ic_activity"
+            android:title="Activity" />
         <item
             android:id="@+id/setting"
             android:icon="@drawable/ic_settings"
