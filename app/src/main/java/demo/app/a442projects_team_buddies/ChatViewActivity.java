@@ -1,7 +1,5 @@
 package demo.app.a442projects_team_buddies;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
@@ -22,17 +24,50 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatRoomActivity extends AppCompatActivity {
+public class ChatViewActivity extends AppCompatActivity {
     String activeUser="";
-    public ArrayList<String> chatList= new ArrayList<>();
+    boolean isActive;
+
 
     public ArrayAdapter arrayAdapter;
 
+
+    private RecyclerView rView ;
+    private ChatViewAdapter rViewAdapter;
+
+    private RecyclerView.LayoutManager rViewLayoutManager;
+
+    ArrayList<ChatViewItem> messages= new ArrayList<>();
+    EditText chatText;
+
+
     FloatingActionButton sendFAB;
 
-    public void sendChat(View view)
+    public void sendMessage(View view)
     {
-        final EditText chatText= findViewById(R.id.chatText);
+
+        ParseQuery<ParseObject> checkFriendQuery= ParseQuery.getQuery("User_Friends");
+
+        checkFriendQuery.whereEqualTo("user_name",activeUser);
+        checkFriendQuery.whereEqualTo("user_friends",ParseUser.getCurrentUser().getUsername());
+
+        checkFriendQuery.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if(e==null)
+                {
+                    if(objects.size()==0)
+                    {
+                        ParseObject friendList= new ParseObject("User_Friends");
+
+                        friendList.put("user_name",activeUser);
+                        friendList.put("user_friends",ParseUser.getCurrentUser().getUsername());
+                        friendList.saveInBackground();
+                    }
+                }
+            }
+        });
+
 
 
         final ParseObject message= new ParseObject("Message");
@@ -41,13 +76,15 @@ public class ChatRoomActivity extends AppCompatActivity {
         message.put("recipient",activeUser);
         message.put("message",chatText.getText().toString());
 
+
+
         message.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                Toast.makeText(ChatRoomActivity.this,"message sent",Toast.LENGTH_LONG).show();
-                chatList.clear();
-                chatList.add(chatText.getText().toString());
-                arrayAdapter.notifyDataSetChanged();
+                Toast.makeText(ChatViewActivity.this,"message sent",Toast.LENGTH_LONG).show();
+                //messages.clear();
+                //messages.add(new ChatViewItem(chatText.getText().toString()));
+                //arrayAdapter.notifyDataSetChanged();
                 chatText.setText("");
                 updateMessageList();
             }
@@ -57,15 +94,26 @@ public class ChatRoomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_room);
+        setContentView(R.layout.chatview);
         Intent intent=getIntent();
+        chatText= findViewById(R.id.messageEditText);
+        isActive= true;
 
         activeUser= intent.getStringExtra("username");
         setTitle(activeUser);
-        final ListView chatListView= findViewById(R.id.chatList);
-        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1,chatList);
+        //messages.add(new ChatViewItem("first message"));
 
-        chatListView.setAdapter(arrayAdapter);
+        rView= findViewById(R.id.recyclerView);
+
+        rView.setHasFixedSize(true);  // if the view changes in size then comment out this line
+        rViewLayoutManager = new LinearLayoutManager(getBaseContext());
+
+
+
+        rViewAdapter = new ChatViewAdapter(messages);
+        rView.setLayoutManager(rViewLayoutManager);
+        rView.setAdapter(rViewAdapter);
+
 
         updateMessageList();
 
@@ -101,17 +149,24 @@ public class ChatRoomActivity extends AppCompatActivity {
                 {
                     if (objects.size()>0)
                     {
-                        chatList.clear();
+                        messages.clear();
                         for (ParseObject message:objects)
                         {
                             String messageContent= message.getString("message");
                             if (!message.getString("sender").equals(ParseUser.getCurrentUser().getUsername())) {
-                                messageContent= "> "+ messageContent;
+                                //messageContent= "> "+ messageContent;
+                                messages.add(new ChatViewItem(messageContent,activeUser));
                             }
-                            chatList.add(messageContent);
+                            else
+                            {
+                                messages.add(new ChatViewItem(messageContent,"right"));
+                            }
                         }
-                        arrayAdapter.notifyDataSetChanged();
-                        refresh(1000);
+                        rViewAdapter.notifyDataSetChanged();
+                        if(isActive)
+                        {
+                            refresh(1000);
+                        }
                     }
                 }
             }
@@ -132,5 +187,18 @@ public class ChatRoomActivity extends AppCompatActivity {
         };
 
         handler.postDelayed(runnable,i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isActive= false;
     }
 }
