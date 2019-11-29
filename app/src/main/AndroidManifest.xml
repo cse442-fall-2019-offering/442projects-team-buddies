@@ -14,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/defaultAppTheme">
-        <activity android:name=".ChatRoomActivity"></activity>
-        <activity android:name=".ChatViewActivity"></activity>
+        <activity android:name=".TakePracticeTest"></activity>
+        <activity android:name=".CreatePracticeTest" />
+        <activity android:name=".PracticeTestView" />
+        <activity android:name=".ChatRoomActivity" />
+        <activity android:name=".ChatViewActivity" />
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"

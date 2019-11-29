@@ -135,6 +135,13 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         else if(menuItem.getItemId()==R.id.m_chatrooms )
         {
             Intent intent = new Intent(this, FriendListActivity.class);
+            intent.putExtra("behaviour","chat");
+            startActivity(intent);
+        }
+        else if(menuItem.getItemId()==R.id.activities)
+        {
+            Intent intent = new Intent(this, FriendListActivity.class);
+            intent.putExtra("behaviour","quiz");
             startActivity(intent);
         }
         else if(menuItem.getItemId()==R.id.logout )
