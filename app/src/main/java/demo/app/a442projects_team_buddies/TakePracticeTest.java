@@ -37,6 +37,7 @@ public class TakePracticeTest extends AppCompatActivity {
     int count=0;
     String activeUser;
     String solution;
+    int correctAnsCount=0;
 
 
     int questionCount;
@@ -104,7 +105,7 @@ public class TakePracticeTest extends AppCompatActivity {
                     String s = (String) option.getTag();
 
                     if (s.equals(solution)) {
-                        if(score < count) {
+                        if(score < count && correctAnsCount==0) {
                             score++;
                             scoreTextView.setText("Score: " + score + "/" + questionCount);
                         }
@@ -112,6 +113,7 @@ public class TakePracticeTest extends AppCompatActivity {
                     }
                     else
                     {
+                        correctAnsCount= 1;
                         Toast.makeText(getBaseContext(),  "Wrong answer", Toast.LENGTH_LONG).show();
 
                     }
@@ -136,6 +138,7 @@ public class TakePracticeTest extends AppCompatActivity {
                     finish();
                 }
                 else {
+                    correctAnsCount=0;
                     setQuestion();
                 }
             }
@@ -149,7 +152,7 @@ public class TakePracticeTest extends AppCompatActivity {
         ParseObject object= questions.get(count);
 
         count++;
-        questionTextView.setText(object.getString("question"));
+        questionTextView.setText(count+". "+object.getString("question")+"?");
         option1.setText(object.getString("option1"));
         option2.setText(object.getString("option2"));
         option3.setText(object.getString("option3"));

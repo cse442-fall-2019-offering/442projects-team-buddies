@@ -3,6 +3,7 @@ package demo.app.a442projects_team_buddies;
 import android.app.Application;
 import android.util.Log;
 
+import com.parse.AuthenticationCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -10,6 +11,8 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.Map;
 
 public class App extends Application {
     @Override

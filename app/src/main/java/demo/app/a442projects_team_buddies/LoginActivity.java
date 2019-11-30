@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getBaseContext(), "successfully sent", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "successfully sent", Toast.LENGTH_LONG).show();
                 ParseUser.requestPasswordResetInBackground("singhvikram855@live.com", new RequestPasswordResetCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
@@ -217,6 +217,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Signed in successfully, show authenticated UI.+++++++++++++++++++++++++++++++++++++
 
                     authenticatedUI();
+
 
                     ((EditText) findViewById(R.id.username)).setText("");
                     ((EditText) findViewById(R.id.password)).setText("");
