@@ -1,5 +1,6 @@
 package demo.app.a442projects_team_buddies;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.parse.ParseUser;
@@ -63,10 +65,30 @@ public class todoListActivity extends AppCompatActivity {
                 new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapter,
-                                                   View item, int pos, long id) {
-                        items.remove(pos);
-                        itemsAdapter.notifyDataSetChanged();
-                        saveChanges();
+                                                   View item, final int pos, long id) {
+
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(todoListActivity.this);
+                        alertDialog.setTitle("Alert");
+                        alertDialog.setMessage("Confirm to delete the task");
+                        alertDialog.setNegativeButton( "Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        items.remove(pos);
+                                        itemsAdapter.notifyDataSetChanged();
+                                        saveChanges();
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog.setPositiveButton( "Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        dialog.dismiss();
+                                    }
+                                });
+                        AlertDialog alert= alertDialog.create();
+                        alert.show();
+
                         return true;
                     }
 
