@@ -20,6 +20,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -121,7 +122,49 @@ public class sendFriendRequest extends AppCompatActivity {
 
                 // Send out the friend request via backend
 
-                Toast.makeText(getBaseContext(),"add button pressed", Toast.LENGTH_LONG).show();
+
+
+
+
+                ParseQuery<ParseObject> query= new ParseQuery<ParseObject>("User_Friends");
+                query.whereEqualTo("user_name",ParseUser.getCurrentUser().getUsername());
+                query.whereEqualTo("user_friends",username);
+
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if(e==null)
+                        {
+                            if(objects.size()==0)
+                            {
+                                ParseObject friendList= new ParseObject("User_Friends");
+
+                                friendList.put("user_name",ParseUser.getCurrentUser().getUsername());
+                                friendList.put("user_friends",username);
+                                friendList.saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        if(e==null)
+                                        {
+                                            Toast.makeText(getBaseContext(), "Success" , Toast.LENGTH_LONG).show();
+
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(getBaseContext(), "Failed "+ e , Toast.LENGTH_LONG).show();
+
+                                        }
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                Toast.makeText(getBaseContext(), username+" already in your friend list", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                    }
+                });
 
 
                 // Then, take user back to the course member list, after prior action is completed

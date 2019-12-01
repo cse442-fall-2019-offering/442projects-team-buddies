@@ -65,6 +65,7 @@ public class ProfileFragment extends Fragment {
         String des="<b>"+"Description: "+"</b>" +currentUser.getString("personalDescription");
         String email="<b>"+"Email: "+"</b>" + currentUser.getEmail();
 
+
         location.setText(Html.fromHtml(loc));
         major.setText(Html.fromHtml(maj));
         description.setText(Html.fromHtml(des));
