@@ -144,11 +144,6 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             intent.putExtra("behaviour","quiz");
             startActivity(intent);
         }
-        else if(menuItem.getItemId()==R.id.m_chatrooms)
-        {
-            Intent intent = new Intent(this, Messages.class);
-            startActivity(intent);
-        }
         else if(menuItem.getItemId()==R.id.logout )
         {
 
