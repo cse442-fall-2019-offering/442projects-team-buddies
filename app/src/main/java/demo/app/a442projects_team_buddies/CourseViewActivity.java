@@ -50,11 +50,7 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-
-
         drawLayout = findViewById(R.id.drawerLayout);
-
-
 
         toggle = new ActionBarDrawerToggle(this,drawLayout,R.string.open,R.string.close);
         drawLayout.addDrawerListener(toggle);
@@ -142,6 +138,10 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         {
             Intent intent = new Intent(this, FriendListActivity.class);
             intent.putExtra("behaviour","quiz");
+            startActivity(intent);
+        }
+        else if(menuItem.getItemId()==R.id.toDoNav) {
+            Intent intent = new Intent(this, todoListActivity.class);
             startActivity(intent);
         }
         else if(menuItem.getItemId()==R.id.logout )
