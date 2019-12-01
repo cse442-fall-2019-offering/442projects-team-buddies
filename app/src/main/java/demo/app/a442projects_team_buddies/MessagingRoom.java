@@ -155,10 +155,15 @@ public class MessagingRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging_room);
+        if (ParseUser.getCurrentUser() != null) {
 
             startWithCurrentUser();
-        myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
+            myHandler.postDelayed(mRefreshMessagesRunnable, POLL_INTERVAL);
+        }
+        else{
 
+
+        }
     }
 
 }
