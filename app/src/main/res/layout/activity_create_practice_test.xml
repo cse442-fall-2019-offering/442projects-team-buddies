@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreatePracticeTest"
+    android:background="#F8F9C5">
+
+    <EditText
+        android:id="@+id/testName_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:hint="Enter Test Name"
+        android:textSize="15dp"
+        >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/question_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/testName_EditText"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Your Question Here"
+        android:textColor="@android:color/black"
+        android:textSize="10sp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/option1_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question_EditText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:hint="Enter your option 1 here.."
+        android:textSize="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/option2_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option1_EditText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Enter your option 2 here.."
+        android:textSize="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/option3_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option2_EditText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Enter your option 3 here.."
+        android:textSize="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/option4_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option3_EditText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Enter your option 4 here.."
+        android:textSize="10dp">
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/correctOption_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option4_EditText"
+        android:text="Select Correct Option:"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="30dp">
+
+    </TextView>
+
+
+    <Spinner
+        android:id="@+id/option_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option4_EditText"
+        android:layout_toRightOf="@+id/correctOption_TextView"
+        android:layout_marginLeft="5dp"
+        >
+
+    </Spinner>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option_spinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp">
+
+
+        <Button
+            android:id="@+id/share_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:text="Share">
+
+        </Button>
+
+        <Button
+            android:id="@+id/nextQuestion_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="15dp"
+
+            android:layout_toRightOf="@+id/share_Button"
+            android:clickable="true"
+            android:text="Next Question">
+
+        </Button>
+
+        <Button
+            android:id="@+id/done_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/share_Button"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:text="Done">
+
+        </Button>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -14,6 +14,8 @@ import com.parse.SaveCallback;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
+import java.util.Map;
+
 public class App extends Application {
     @Override
     public void onCreate() {

@@ -52,6 +52,7 @@ public class SignupActivity extends AppCompatActivity {
         newUser.setUsername(String.valueOf(user.getText()));
         newUser.setPassword(String.valueOf(password.getText()));
 
+
         //newUser.isAuthenticated();
 
 
