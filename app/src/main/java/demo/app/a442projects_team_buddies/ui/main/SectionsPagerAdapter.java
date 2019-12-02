@@ -1,6 +1,7 @@
 package demo.app.a442projects_team_buddies.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import demo.app.a442projects_team_buddies.courseToDoListFragment;
 import demo.app.a442projects_team_buddies.R;
 import demo.app.a442projects_team_buddies.StudentListFragment;
+import demo.app.a442projects_team_buddies.courseToDoListFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -36,17 +38,21 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         Fragment fragment= null;
+        Bundle bundle= new Bundle();
+        bundle.putString("Course", Id);
         switch (position){
             case 0:
 
 
-                Bundle bundle= new Bundle();
-                bundle.putString("Course", Id);
+
 
                 fragment= new StudentListFragment();
                 fragment.setArguments(bundle);
                 break;
-            case 1: fragment= new courseToDoListFragment();
+            case 1:
+
+                fragment= new courseToDoListFragment();
+                fragment.setArguments(bundle);
                 break;
         }
 
