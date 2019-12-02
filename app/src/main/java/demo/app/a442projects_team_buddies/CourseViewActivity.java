@@ -140,10 +140,6 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
             intent.putExtra("behaviour","quiz");
             startActivity(intent);
         }
-        else if(menuItem.getItemId()==R.id.toDoNav) {
-            Intent intent = new Intent(this, todoListActivity.class);
-            startActivity(intent);
-        }
         else if(menuItem.getItemId()==R.id.logout )
         {
 

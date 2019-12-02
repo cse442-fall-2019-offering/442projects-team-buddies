@@ -1,7 +1,6 @@
 package demo.app.a442projects_team_buddies.ui.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import demo.app.a442projects_team_buddies.Frag2;
+import demo.app.a442projects_team_buddies.courseToDoListFragment;
 import demo.app.a442projects_team_buddies.R;
 import demo.app.a442projects_team_buddies.StudentListFragment;
 
@@ -47,7 +46,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment= new StudentListFragment();
                 fragment.setArguments(bundle);
                 break;
-            case 1: fragment= new Frag2();
+            case 1: fragment= new courseToDoListFragment();
                 break;
         }
 

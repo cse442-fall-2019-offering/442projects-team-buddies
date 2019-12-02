@@ -7,7 +7,7 @@
     <ListView
         android:id="@+id/todoItems"
         android:layout_width="match_parent"
-        android:layout_height="505dp"
+        android:layout_height="506dp"
         android:layout_above="@+id/btnAddToDoTask"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -39,13 +39,5 @@
         android:onClick="addTodoItem"
         android:background="@color/colorMenuBlue"
         android:textColor="@color/white"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorMenuBlue"
-        android:onClick="onTodoBack"
-        android:text="Back"
-        android:textColor="@color/white" />
 
 </RelativeLayout>
