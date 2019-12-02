@@ -16,38 +16,21 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/logo_section"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/logo_section">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/appLogo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="228dp"
+                    android:layout_height="160dp"
+                    android:layout_centerInParent="true"
                     android:layout_marginLeft="75dp"
                     android:layout_marginTop="48dp"
                     android:layout_marginBottom="20dp"
                     android:padding="16dp"
                     android:src="@drawable/logo" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="STUDY"
-                    android:textColor="@color/colorBlue1"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@id/appLogo"
-                    android:id="@+id/txt1"
-                    android:layout_marginTop="80dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BUDDIES"
-                    android:textColor="@color/colorBlue1"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@id/appLogo"
-                    android:layout_below="@id/txt1"
-                    android:id="@+id/txt2" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -139,17 +122,6 @@
                     android:layout_below="@id/login_btn"
                     android:clickable="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/signUp_btn"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="35dp"
-                    android:text=" Login with following account? "
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_marginTop="40dp"
-                    android:clickable="true" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -172,6 +144,7 @@
                     android:id="@+id/cart"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@id/voice"
                     android:src="@drawable/google_icon" />
