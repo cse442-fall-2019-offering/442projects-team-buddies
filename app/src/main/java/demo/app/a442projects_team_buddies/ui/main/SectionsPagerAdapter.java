@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import demo.app.a442projects_team_buddies.Frag2;
+import demo.app.a442projects_team_buddies.courseToDoListFragment;
 import demo.app.a442projects_team_buddies.R;
 import demo.app.a442projects_team_buddies.StudentListFragment;
+import demo.app.a442projects_team_buddies.courseToDoListFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -50,7 +51,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 break;
             case 1:
 
-                fragment= new Frag2();
+                fragment= new courseToDoListFragment();
                 fragment.setArguments(bundle);
                 break;
         }
