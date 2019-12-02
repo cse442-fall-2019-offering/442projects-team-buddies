@@ -9,10 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.zip.Inflater;
+
 public class Frag2 extends Fragment {
+    String Id;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frag2_view,container,false);
+        View inflater1= inflater.inflate(R.layout.frag2_view,container,false);
+
+        Id= this.getArguments().getString("Course").toString();
+
+
+        return inflater1;
     }
 }

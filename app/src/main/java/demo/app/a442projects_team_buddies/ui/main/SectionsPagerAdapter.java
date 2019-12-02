@@ -37,17 +37,21 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         Fragment fragment= null;
+        Bundle bundle= new Bundle();
+        bundle.putString("Course", Id);
         switch (position){
             case 0:
 
 
-                Bundle bundle= new Bundle();
-                bundle.putString("Course", Id);
+
 
                 fragment= new StudentListFragment();
                 fragment.setArguments(bundle);
                 break;
-            case 1: fragment= new Frag2();
+            case 1:
+
+                fragment= new Frag2();
+                fragment.setArguments(bundle);
                 break;
         }
 
