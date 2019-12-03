@@ -35,6 +35,7 @@ public class PracticeTestView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_test_view);
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
         Intent intent= getIntent();
         activeUser= intent.getStringExtra("username");
 
@@ -43,7 +44,7 @@ public class PracticeTestView extends AppCompatActivity {
         practiceTestListView= findViewById(R.id.practiceTestListView);
         arrayList= new ArrayList<>();
         arrayList.clear();
-        arrayList.add("sample test");
+
 
 
 
@@ -91,6 +92,20 @@ public class PracticeTestView extends AppCompatActivity {
         });
     }
 
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater= getMenuInflater();

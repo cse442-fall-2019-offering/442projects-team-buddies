@@ -7,14 +7,14 @@
     <ListView
         android:id="@+id/todoItems"
         android:layout_width="match_parent"
-        android:layout_height="506dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/btnAddToDoTask"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="49dp" />
+         />
 
     <EditText
         android:layout_width="wrap_content"

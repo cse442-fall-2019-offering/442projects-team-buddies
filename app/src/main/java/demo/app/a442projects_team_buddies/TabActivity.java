@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.parse.ParseUser;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class TabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
 
         Intent intent= getIntent();
 
@@ -46,6 +48,20 @@ public class TabActivity extends AppCompatActivity {
 
 
 
+    }
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
     }
 
     @Override

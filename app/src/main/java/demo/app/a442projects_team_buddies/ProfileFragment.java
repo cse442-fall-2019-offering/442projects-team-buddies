@@ -79,7 +79,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(), "edit button pressed", Toast.LENGTH_LONG).show();
 
+
                 Intent intent = new Intent(getActivity(), ProfileEditActivity.class);
+
                 startActivity(intent);
 
             }

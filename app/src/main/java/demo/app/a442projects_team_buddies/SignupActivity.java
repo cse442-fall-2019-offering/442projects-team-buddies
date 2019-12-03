@@ -76,7 +76,7 @@ public class SignupActivity extends AppCompatActivity {
                         ((EditText) findViewById(R.id.password)).setText("");
                         email.setText("");
                     } else {
-                        Toast.makeText(getBaseContext(), "User already exist", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "User already exist "+e, Toast.LENGTH_LONG).show();
                     }
                 }
             });

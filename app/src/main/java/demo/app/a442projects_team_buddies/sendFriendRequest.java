@@ -38,6 +38,7 @@ public class sendFriendRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profileview);
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
 
         Intent intent= getIntent();
 
@@ -173,6 +174,20 @@ public class sendFriendRequest extends AppCompatActivity {
             }
         });
 
+    }
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
     }
 
     @Override

@@ -3,10 +3,12 @@ package demo.app.a442projects_team_buddies;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
@@ -127,12 +129,17 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
         {
             Intent intent = new Intent(this, settingsActivity.class);
             startActivity(intent);
+            if(intent.getBooleanExtra("delete",false)==true)
+            {
+                finish();
+            }
         }
         else if(menuItem.getItemId()==R.id.m_chatrooms )
         {
             Intent intent = new Intent(this, FriendListActivity.class);
             intent.putExtra("behaviour","chat");
             startActivity(intent);
+
         }
         else if(menuItem.getItemId()==R.id.activities)
         {
@@ -150,6 +157,7 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
                 signOut();
             }
             else {
+
                 ParseUser.logOut();
 
                 //Intent intent = new Intent(CourseViewActivity.this,LoginActivity.class);
@@ -177,6 +185,31 @@ public class CourseViewActivity extends AppCompatActivity implements NavigationV
                 });
     }
 
+    @Override
+    public void onBackPressed() {
 
 
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(CourseViewActivity.this);
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("Press Ok to Log out");
+        alertDialog.setNegativeButton( "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ParseUser.logOut();
+                        CourseViewActivity.super.onBackPressed();
+                        finish();
+
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setPositiveButton( "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert= alertDialog.create();
+        alert.show();
+    }
 }

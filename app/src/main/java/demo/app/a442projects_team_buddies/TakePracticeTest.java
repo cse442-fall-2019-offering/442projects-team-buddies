@@ -47,7 +47,7 @@ public class TakePracticeTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_practice_test);
-
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
 
         Intent intent = getIntent();
         String testName=intent.getStringExtra("testName");
@@ -144,6 +144,20 @@ public class TakePracticeTest extends AppCompatActivity {
             }
         });
 
+    }
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        else if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        else if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        else if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
     }
 
     public void setQuestion()

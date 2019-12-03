@@ -225,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getBaseContext(), "Not a valid user", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Not a valid user" , Toast.LENGTH_LONG).show();
                 }
             }
         });

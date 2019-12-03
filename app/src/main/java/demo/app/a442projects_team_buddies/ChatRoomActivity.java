@@ -59,6 +59,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         Intent intent=getIntent();
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
 
         activeUser= intent.getStringExtra("username");
         setTitle(activeUser);
@@ -72,6 +73,20 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
 
+    }
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
     }
 
     public void updateMessageList()

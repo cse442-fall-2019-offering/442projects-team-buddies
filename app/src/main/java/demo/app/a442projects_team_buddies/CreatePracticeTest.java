@@ -54,6 +54,7 @@ public class CreatePracticeTest extends AppCompatActivity implements AdapterView
         nextQuestion= findViewById(R.id.nextQuestion_Button);
         done= findViewById(R.id.done_Button);
         questionCount=0;
+        setUserTheme(ParseUser.getCurrentUser().getInt("theme"));
 
 
 
@@ -98,6 +99,21 @@ public class CreatePracticeTest extends AppCompatActivity implements AdapterView
         spinner.setAdapter(arrayAdapter);
 
         spinner.setOnItemSelectedListener(this);
+    }
+
+    public void setUserTheme(int theme) {
+        if(theme == 0) {
+            setTheme(R.style.defaultAppTheme);
+        }
+        if(theme == 1) {
+            setTheme(R.style.redAppTheme);
+        }
+        if(theme == 2) {
+            setTheme(R.style.greenAppTheme);
+        }
+        if(theme == 3) {
+            setTheme(R.style.yellowAppTheme);
+        }
     }
 
     public void Share()
