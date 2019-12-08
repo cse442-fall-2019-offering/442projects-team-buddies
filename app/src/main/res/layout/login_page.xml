@@ -75,7 +75,7 @@
                     android:textColor="@android:color/darker_gray"
                     android:id="@+id/keep_account_info"
                     android:text="Remember Me "
-                    android:visibility="invisible"
+
                     android:layout_marginLeft="35dp"
                     android:padding="8dp"/>
 
@@ -85,7 +85,7 @@
                     android:layout_toRightOf="@id/keep_account_info"
                     android:layout_below="@id/password"
                     android:text="  Forget your Password? "
-                    android:visibility="invisible"
+
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginTop="8.8dp"
                     android:clickable="true"
@@ -137,7 +137,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="98dp"
                     android:id="@+id/voice"
-
+                    android:visibility="invisible"
                     android:src="@drawable/ub_logo"/>
 
                 <ImageButton
@@ -153,6 +153,7 @@
                     android:layout_height="40dp"
                     android:layout_toRightOf="@id/cart"
                     android:id="@+id/clock"
+                    android:visibility="invisible"
                     android:src="@drawable/github_icon"
                     android:layout_marginLeft="20dp"/>
 

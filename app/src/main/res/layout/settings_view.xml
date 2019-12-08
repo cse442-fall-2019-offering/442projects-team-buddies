@@ -68,6 +68,6 @@
         android:layout_marginTop="20dp"
         android:text="delete account"
         android:clickable="true"
-        android:visibility="invisible"></Button>
+        android:visibility="visible"></Button>
 
 </LinearLayout>
